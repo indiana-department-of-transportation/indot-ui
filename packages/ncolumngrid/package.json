@@ -1,0 +1,58 @@
+{
+  "name": "ncolumngrid",
+  "version": "0.0.1",
+  "description": "Creates a 1, 2, or 3 column grid layout",
+  "main": "dist/NColumnGrid.js",
+  "scripts": {
+    "test": "jest",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build": "npm run build:ts && npm run gen-docs",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:ts": "tsc",
+    "build:docs": "typedoc --readme README.md --excludeNotExported --ignoreCompilerErrors --exclude '{**/*spec*,**/node_modules/**,**/spec/**}' --out docs ./src",
+    "gen-docs": "npm run build:docs && npm run no-jekyll",
+    "no-jekyll": "touch docs/.nojekyll"
+  },
+  "repository": {
+    "type": "git",
+    "url": "http://jsmith@bitbucket.indot.org/scm/uic/ncolumngrid.git"
+  },
+  "keywords": [
+    "react",
+    "grid",
+    "layout"
+  ],
+  "author": "jasmith79",
+  "license": "MIT",
+  "peerDependencies": {
+    "@material-ui/core": "^4.3.3",
+    "prop-types": "^15.7.2",
+    "react": "^16.10.1",
+    "react-dom": "^16.10.1"
+  },
+  "devDependencies": {
+    "@material-ui/core": "^4.3.3",
+    "@types/enzyme": "^3.10.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/jest": "^24.0.18",
+    "@types/jsdom": "^12.2.4",
+    "@types/prop-types": "^15.7.3",
+    "@types/react": "^16.9.4",
+    "@types/react-dom": "^16.9.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "jest": "^24.9.0",
+    "jsdom": "^15.1.1",
+    "jsdom-global": "^3.0.2",
+    "prop-types": "^15.7.2",
+    "react": "^16.9.0",
+    "react-dom": "^16.9.0",
+    "source-map-loader": "^0.2.4",
+    "ts-jest": "^24.1.0",
+    "ts-loader": "^6.0.4",
+    "tslint": "^5.20.0",
+    "typedoc": "^0.15.0",
+    "typescript": "^3.6.3" 
+  }
+}
