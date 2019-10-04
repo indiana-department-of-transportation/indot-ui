@@ -1,15 +1,14 @@
 {
-  "name": "@indot/account",
+  "name": "@indot/appbar",
   "version": "0.0.1",
-  "description": "Account component for @indot-ui",
-  "main": "dist/Account.js",
+  "description": "Appbar for INDOT TMC React applications",
+  "main": "dist/Appbar.js",
   "scripts": {
     "test": "jest"
   },
   "keywords": [
     "React",
-    "Material-UI",
-    "Account"
+    "Material-UI"
   ],
   "author": "jarsmith@indot.in.gov",
   "license": "MIT",

@@ -1,0 +1,16 @@
+{
+  "name": "@indot/material-theme",
+  "version": "0.0.1",
+  "description": "Material UI theme for INDOT TMC applications.",
+  "main": "dist/theme.js",
+  "scripts": {
+    "test": "jest"
+  },
+  "keywords": [
+    "React",
+    "Material-UI",
+    "theme"
+  ],
+  "author": "jarsmith",
+  "license": "MIT"
+}
