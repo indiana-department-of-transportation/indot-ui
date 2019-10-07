@@ -204,12 +204,12 @@ TMCSnackbar.propTypes = {
         PropTypes.string,
         PropTypes.element,
     ]).isRequired,
-    // variant: PropTypes.oneOf([
-    //   'success',
-    //   'warning',
-    //   'error',
-    //   'info',
-    // ]),
+    variant: PropTypes.oneOf([
+        'success',
+        'warning',
+        'error',
+        'info',
+    ]),
     timeout: PropTypes.number,
     color: PropTypes.oneOf([
         'primary',
@@ -220,15 +220,15 @@ TMCSnackbar.propTypes = {
         PropTypes.element,
     ]),
     closer: PropTypes.element,
-    // verticalAlign: PropTypes.oneOf([
-    //   'top',
-    //   'bottom',
-    // ]),
-    // horizontalAlign: PropTypes.oneOf([
-    //   'left',
-    //   'right',
-    //   'center',
-    // ]),
+    verticalAlign: PropTypes.oneOf([
+        'top',
+        'bottom',
+    ]),
+    horizontalAlign: PropTypes.oneOf([
+        'left',
+        'right',
+        'center',
+    ]),
     onAction: PropTypes.func,
     onClose: PropTypes.func,
     className: PropTypes.string,

@@ -73,7 +73,7 @@ export const Login = ({
       initialValues={defaultFormState}
       onSubmit={submitHandler}
     >
-      {({ isSubmitting }) => (
+      {({ isSubmitting }: { isSubmitting: boolean }) => (
         <Form>
           <Grid
             container

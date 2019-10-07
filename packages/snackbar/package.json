@@ -24,6 +24,7 @@
     "access": "public"
   },
   "devDependencies": {
+    "@jasmith79/global-this": "0.0.1",
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.18",
@@ -34,6 +35,7 @@
     "@types/react-router-dom": "^5.1.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
+    "install-peers": "^1.0.3",
     "jest": "^24.9.0",
     "jsdom": "^15.1.1",
     "jsdom-global": "^3.0.2",
@@ -42,11 +44,12 @@
     "typedoc": "^0.15.0",
     "typescript": "^3.6.3"
   },
-  "dependencies": {
+  "peerDependencies": {
     "@material-ui/core": "^4.5.0",
     "@material-ui/icons": "^4.4.3",
     "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2"
-  }
+  },
+  "dependencies": {}
 }

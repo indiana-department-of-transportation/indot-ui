@@ -6,7 +6,7 @@
  * @license MIT
  * @copyright INDOT, 2019
  */
-import React, { MouseEvent as MEvt, SyntheticEvent, ReactNode, FC } from 'react';
+import React, { MouseEvent as MEvt, SyntheticEvent, ReactNode } from 'react';
 import PropTypes from 'prop-types';
 import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 declare enum variants {
@@ -87,5 +87,21 @@ export declare const DefaultActionButton: {
  * @param {string} props.className The style class from the caller.
  * @returns {React.FunctionComponent} The Snackbar component.
  */
-export declare const TMCSnackbar: FC<ISnackbarProps>;
+export declare const TMCSnackbar: {
+    ({ message, variant, timeout, color, action, closer, verticalAlign, horizontalAlign, onAction, onClose, className, }: ISnackbarProps): JSX.Element;
+    defaultProps: ISnackbarProps;
+    propTypes: {
+        message: PropTypes.Validator<string | PropTypes.ReactElementLike>;
+        variant: PropTypes.Requireable<string>;
+        timeout: PropTypes.Requireable<number>;
+        color: PropTypes.Requireable<string>;
+        action: PropTypes.Requireable<string | PropTypes.ReactElementLike>;
+        closer: PropTypes.Requireable<PropTypes.ReactElementLike>;
+        verticalAlign: PropTypes.Requireable<string>;
+        horizontalAlign: PropTypes.Requireable<string>;
+        onAction: PropTypes.Requireable<(...args: any[]) => any>;
+        onClose: PropTypes.Requireable<(...args: any[]) => any>;
+        className: PropTypes.Requireable<string>;
+    };
+};
 export default TMCSnackbar;

@@ -203,7 +203,7 @@ DefaultActionButton.propTypes = {
  * @param {string} props.className The style class from the caller.
  * @returns {React.FunctionComponent} The Snackbar component.
  */
-export const TMCSnackbar: FC<ISnackbarProps> = ({
+export const TMCSnackbar = ({
   message,
   variant,
   timeout = 5000,
@@ -306,12 +306,12 @@ TMCSnackbar.propTypes = {
     PropTypes.string,
     PropTypes.element,
   ]).isRequired,
-  // variant: PropTypes.oneOf([
-  //   'success',
-  //   'warning',
-  //   'error',
-  //   'info',
-  // ]),
+  variant: PropTypes.oneOf([
+    'success',
+    'warning',
+    'error',
+    'info',
+  ]),
   timeout: PropTypes.number,
   color: PropTypes.oneOf([
     'primary',
@@ -322,15 +322,15 @@ TMCSnackbar.propTypes = {
     PropTypes.element,
   ]),
   closer: PropTypes.element,
-  // verticalAlign: PropTypes.oneOf([
-  //   'top',
-  //   'bottom',
-  // ]),
-  // horizontalAlign: PropTypes.oneOf([
-  //   'left',
-  //   'right',
-  //   'center',
-  // ]),
+  verticalAlign: PropTypes.oneOf([
+    'top',
+    'bottom',
+  ]),
+  horizontalAlign: PropTypes.oneOf([
+    'left',
+    'right',
+    'center',
+  ]),
   onAction: PropTypes.func,
   onClose: PropTypes.func,
   className: PropTypes.string,

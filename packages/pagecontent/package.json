@@ -20,17 +20,19 @@
   "author": "jarsmith@indot.in.gov",
   "license": "MIT",
   "peerDependencies": {
-    "react": "^16.10.1",
-    "react-dom": "^16.10.1"
+    "prop-types": "^15.7.2",
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
   },
   "devDependencies": {
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.18",
     "@types/prop-types": "^15.7.3",
-    "@types/react": "^16.9.4",
+    "@types/react": "^16.9.5",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
+    "install-peers": "^1.0.3",
     "jest": "^24.9.0",
     "jsdom": "^15.1.1",
     "jsdom-global": "^3.0.2",
@@ -41,5 +43,6 @@
   },
   "publishConfig": {
     "access": "public"
-  }
+  },
+  "dependencies": {}
 }
