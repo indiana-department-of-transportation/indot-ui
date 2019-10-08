@@ -1,3 +1,4 @@
+"use strict";
 /**
  * TMCSnackbar.js
  *
@@ -6,20 +7,24 @@
  * @license MIT
  * @copyright INDOT, 2019
  */
-import React from 'react';
-import PropTypes from 'prop-types';
-import clsx from 'clsx';
-import Snackbar from '@material-ui/core/Snackbar';
-import SnackbarContent from '@material-ui/core/SnackbarContent';
-import Button from '@material-ui/core/Button';
-import IconButton from '@material-ui/core/IconButton';
-import { makeStyles } from '@material-ui/core/styles';
-import { amber, green } from '@material-ui/core/colors';
-import CheckCircleIcon from '@material-ui/icons/CheckCircle';
-import ErrorIcon from '@material-ui/icons/Error';
-import InfoIcon from '@material-ui/icons/Info';
-import CloseIcon from '@material-ui/icons/Close';
-import WarningIcon from '@material-ui/icons/Warning';
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
+Object.defineProperty(exports, "__esModule", { value: true });
+const react_1 = __importDefault(require("react"));
+const prop_types_1 = __importDefault(require("prop-types"));
+const clsx_1 = __importDefault(require("clsx"));
+const Snackbar_1 = __importDefault(require("@material-ui/core/Snackbar"));
+const SnackbarContent_1 = __importDefault(require("@material-ui/core/SnackbarContent"));
+const Button_1 = __importDefault(require("@material-ui/core/Button"));
+const IconButton_1 = __importDefault(require("@material-ui/core/IconButton"));
+const styles_1 = require("@material-ui/core/styles");
+const colors_1 = require("@material-ui/core/colors");
+const CheckCircle_1 = __importDefault(require("@material-ui/icons/CheckCircle"));
+const Error_1 = __importDefault(require("@material-ui/icons/Error"));
+const Info_1 = __importDefault(require("@material-ui/icons/Info"));
+const Close_1 = __importDefault(require("@material-ui/icons/Close"));
+const Warning_1 = __importDefault(require("@material-ui/icons/Warning"));
 var variants;
 (function (variants) {
     variants["success"] = "success";
@@ -47,7 +52,7 @@ const DEFAULT_SNACKBAR_PROPS = {
     onClose: emptyFn,
     className: '',
 };
-const useStyles = makeStyles(theme => ({
+const useStyles = styles_1.makeStyles(theme => ({
     primary: {
         backgroundColor: theme.palette.primary.main,
     },
@@ -55,7 +60,7 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.secondary.dark,
     },
     success: {
-        backgroundColor: green[600],
+        backgroundColor: colors_1.green[600],
     },
     error: {
         backgroundColor: theme.palette.error.dark,
@@ -64,7 +69,7 @@ const useStyles = makeStyles(theme => ({
         backgroundColor: theme.palette.primary.main,
     },
     warning: {
-        backgroundColor: amber[700],
+        backgroundColor: colors_1.amber[700],
     },
     icon: {
         fontSize: 20,
@@ -78,11 +83,11 @@ const useStyles = makeStyles(theme => ({
         alignItems: 'center',
     },
 }));
-export const iconVariants = {
-    [variants.success]: CheckCircleIcon,
-    [variants.warning]: WarningIcon,
-    [variants.error]: ErrorIcon,
-    [variants.info]: InfoIcon,
+exports.iconVariants = {
+    [variants.success]: CheckCircle_1.default,
+    [variants.warning]: Warning_1.default,
+    [variants.error]: Error_1.default,
+    [variants.info]: Info_1.default,
 };
 /**
  * @description Default close button for the Snackbar. Can be overridden by passing a component
@@ -92,13 +97,13 @@ export const iconVariants = {
  * @param {Function} props.onClick Optional click handler.
  * @returns {React.FunctionComponent} The default close button component.
  */
-export const DefaultCloseButton = ({ onClick, }) => {
+exports.DefaultCloseButton = ({ onClick, }) => {
     const classes = useStyles();
-    return (React.createElement(IconButton, { key: "close", "aria-label": "Close", color: "inherit", onClick: onClick },
-        React.createElement(CloseIcon, { className: classes.icon })));
+    return (react_1.default.createElement(IconButton_1.default, { key: "close", "aria-label": "Close", color: "inherit", onClick: onClick },
+        react_1.default.createElement(Close_1.default, { className: classes.icon })));
 };
-DefaultCloseButton.propTypes = {
-    onClick: PropTypes.func.isRequired,
+exports.DefaultCloseButton.propTypes = {
+    onClick: prop_types_1.default.func.isRequired,
 };
 /**
  * @description Default action button for the Snackbar. Can be overridden by passing a
@@ -109,10 +114,10 @@ DefaultCloseButton.propTypes = {
  * @param {Function} props.onClick Optional click handler.
  * @returns {React.FunctionComponent} The default action button component.
  */
-export const DefaultActionButton = ({ label, onClick, }) => (React.createElement(Button, { key: "undo", color: "secondary", size: "small", onClick: onClick }, label));
-DefaultActionButton.propTypes = {
-    label: PropTypes.string.isRequired,
-    onClick: PropTypes.func.isRequired,
+exports.DefaultActionButton = ({ label, onClick, }) => (react_1.default.createElement(Button_1.default, { key: "undo", color: "secondary", size: "small", onClick: onClick }, label));
+exports.DefaultActionButton.propTypes = {
+    label: prop_types_1.default.string.isRequired,
+    onClick: prop_types_1.default.func.isRequired,
 };
 /**
  * @description A Snackbar component for TMC React applicatons.
@@ -132,7 +137,7 @@ DefaultActionButton.propTypes = {
  * @param {string} props.className The style class from the caller.
  * @returns {React.FunctionComponent} The Snackbar component.
  */
-export const TMCSnackbar = ({ message, variant, timeout = 5000, color = 'primary', action = null, closer = null, verticalAlign = 'bottom', horizontalAlign = window.matchMedia('(width > 600px)')
+exports.TMCSnackbar = ({ message, variant, timeout = 5000, color = 'primary', action = null, closer = null, verticalAlign = 'bottom', horizontalAlign = window.matchMedia('(width > 600px)')
     ? 'center'
     : 'left', onAction = emptyFn, onClose = emptyFn, className = '', }) => {
     const classes = useStyles();
@@ -141,22 +146,22 @@ export const TMCSnackbar = ({ message, variant, timeout = 5000, color = 'primary
         open: Boolean(message),
     };
     const contentProps = {
-        message: React.createElement("span", { id: "snackbar-message", className: classes.message }, message),
+        message: react_1.default.createElement("span", { id: "snackbar-message", className: classes.message }, message),
     };
     if (className) {
         snackProps.className = className;
         contentProps.className = className;
     }
     if (color) {
-        contentProps.className = clsx(className, classes[color]);
+        contentProps.className = clsx_1.default(className, classes[color]);
     }
     if (variant) {
-        snackProps.className = clsx(className, classes[variant]);
-        contentProps.className = clsx(className, classes[variant]);
-        const Icon = iconVariants[variant];
+        snackProps.className = clsx_1.default(className, classes[variant]);
+        contentProps.className = clsx_1.default(className, classes[variant]);
+        const Icon = exports.iconVariants[variant];
         if (Icon) {
-            contentProps.message = (React.createElement("span", { id: "snackbar-message", className: clsx(classes.message, classes[variant]) },
-                React.createElement(Icon, { className: clsx(classes.icon, classes.iconVariant, classes[variant]) }),
+            contentProps.message = (react_1.default.createElement("span", { id: "snackbar-message", className: clsx_1.default(classes.message, classes[variant]) },
+                react_1.default.createElement(Icon, { className: clsx_1.default(classes.icon, classes.iconVariant, classes[variant]) }),
                 message));
         }
     }
@@ -173,9 +178,9 @@ export const TMCSnackbar = ({ message, variant, timeout = 5000, color = 'primary
         snackProps.anchorOrigin.horizontal = horizontalAlign;
     }
     if (action) {
-        const ActionElem = ({ onClick }) => (React.createElement(DefaultActionButton, { label: action, onClick: onClick }));
+        const ActionElem = ({ onClick }) => (react_1.default.createElement(exports.DefaultActionButton, { label: action, onClick: onClick }));
         ActionElem.propTypes = {
-            onClick: PropTypes.func.isRequired,
+            onClick: prop_types_1.default.func.isRequired,
         };
         const ActionButton = typeof action === 'string'
             // eslint-disable-next-line react/prop-types
@@ -183,55 +188,55 @@ export const TMCSnackbar = ({ message, variant, timeout = 5000, color = 'primary
             : action;
         if (!contentProps.action)
             contentProps.action = [];
-        contentProps.action.push(React.createElement(ActionButton, { key: 2, onClick: onAction }));
+        contentProps.action.push(react_1.default.createElement(ActionButton, { key: 2, onClick: onAction }));
     }
     if (closer) {
         const CloseButton = closer
             ? closer
-            : DefaultCloseButton;
+            : exports.DefaultCloseButton;
         if (!contentProps.action)
             contentProps.action = [];
         contentProps.action.push(onClose
-            ? React.createElement(CloseButton, { key: 1, onClick: onClose })
-            : React.createElement(CloseButton, { key: 1, onClick: emptyFn }));
+            ? react_1.default.createElement(CloseButton, { key: 1, onClick: onClose })
+            : react_1.default.createElement(CloseButton, { key: 1, onClick: emptyFn }));
     }
-    return (React.createElement(Snackbar, Object.assign({}, snackProps),
-        React.createElement(SnackbarContent, Object.assign({}, contentProps))));
+    return (react_1.default.createElement(Snackbar_1.default, Object.assign({}, snackProps),
+        react_1.default.createElement(SnackbarContent_1.default, Object.assign({}, contentProps))));
 };
-TMCSnackbar.defaultProps = DEFAULT_SNACKBAR_PROPS;
-TMCSnackbar.propTypes = {
-    message: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.element,
+exports.TMCSnackbar.defaultProps = DEFAULT_SNACKBAR_PROPS;
+exports.TMCSnackbar.propTypes = {
+    message: prop_types_1.default.oneOfType([
+        prop_types_1.default.string,
+        prop_types_1.default.element,
     ]).isRequired,
-    variant: PropTypes.oneOf([
+    variant: prop_types_1.default.oneOf([
         'success',
         'warning',
         'error',
         'info',
     ]),
-    timeout: PropTypes.number,
-    color: PropTypes.oneOf([
+    timeout: prop_types_1.default.number,
+    color: prop_types_1.default.oneOf([
         'primary',
         'secondary',
     ]),
-    action: PropTypes.oneOfType([
-        PropTypes.string,
-        PropTypes.element,
+    action: prop_types_1.default.oneOfType([
+        prop_types_1.default.string,
+        prop_types_1.default.element,
     ]),
-    closer: PropTypes.element,
-    verticalAlign: PropTypes.oneOf([
+    closer: prop_types_1.default.element,
+    verticalAlign: prop_types_1.default.oneOf([
         'top',
         'bottom',
     ]),
-    horizontalAlign: PropTypes.oneOf([
+    horizontalAlign: prop_types_1.default.oneOf([
         'left',
         'right',
         'center',
     ]),
-    onAction: PropTypes.func,
-    onClose: PropTypes.func,
-    className: PropTypes.string,
+    onAction: prop_types_1.default.func,
+    onClose: prop_types_1.default.func,
+    className: prop_types_1.default.string,
 };
-export default TMCSnackbar;
+exports.default = exports.TMCSnackbar;
 //# sourceMappingURL=Snackbar.js.map
