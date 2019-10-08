@@ -29,6 +29,8 @@ import InfoIcon from '@material-ui/icons/Info';
 import CloseIcon from '@material-ui/icons/Close';
 import WarningIcon from '@material-ui/icons/Warning';
 
+import { IPojo, emptyFn } from '@jasmith79/ts-utils';
+
 enum variants {
   success = 'success',
   warning = 'warning',
@@ -73,7 +75,6 @@ interface IContentProps {
   action?: ReactNode[],
 }
 
-const emptyFn = (...args: any[]) => { };
 const DEFAULT_ANCHOR: IAnchor = {
   horizontal: 'left',
   vertical: 'top',
@@ -87,15 +88,13 @@ const DEFAULT_SNACKBAR_PROPS: ISnackbarProps = {
   action: '',
   closer: undefined,
   verticalAlign: 'bottom',
-  horizontalAlign: window.matchMedia('(width > 600px)')
-    ? 'center'
-    : 'left',
+  horizontalAlign: 'center',
   onAction: emptyFn,
   onClose: emptyFn,
   className: '',
 };
 
-const useStyles = makeStyles(theme => ({
+const useStyles = makeStyles((theme: IPojo) => ({
   primary: {
     backgroundColor: theme.palette.primary.main,
   },
@@ -211,7 +210,7 @@ export const TMCSnackbar = ({
   action = null,
   closer = null,
   verticalAlign = 'bottom',
-  horizontalAlign = window.matchMedia('(width > 600px)')
+  horizontalAlign = window.matchMedia('(width > 600px)').matches
     ? 'center'
     : 'left',
   onAction = emptyFn,

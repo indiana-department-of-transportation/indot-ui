@@ -8,6 +8,7 @@
  */
 import React, { MouseEvent as MEvt, SyntheticEvent, ReactNode } from 'react';
 import PropTypes from 'prop-types';
+import CheckCircleIcon from '@material-ui/icons/CheckCircle';
 declare enum variants {
     success = "success",
     warning = "warning",
@@ -28,10 +29,10 @@ export interface ISnackbarProps {
     className?: string;
 }
 export declare const iconVariants: {
-    [variants.success]: any;
-    [variants.warning]: any;
-    [variants.error]: any;
-    [variants.info]: any;
+    [variants.success]: typeof CheckCircleIcon;
+    [variants.warning]: typeof CheckCircleIcon;
+    [variants.error]: typeof CheckCircleIcon;
+    [variants.info]: typeof CheckCircleIcon;
 };
 /**
  * @description Default close button for the Snackbar. Can be overridden by passing a component

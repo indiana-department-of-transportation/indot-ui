@@ -7,20 +7,27 @@
  * @copyright INDOT, 2019
  */
 
+import 'jsdom-global/register';
 import React from 'react';
 import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, { mount } from 'enzyme';
 import globalThis from '@jasmith79/global-this';
 
 import TMCSnackbar from './Snackbar';
+import { emptyFn } from '@jasmith79/ts-utils';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-globalThis.window = {
-  matchMedia (arg: string) {
-    return true;
-  }
-};
+window.matchMedia = jest.fn((arg: string) => ({
+  matches: true,
+  addListener: function() {},
+  removeListener: function() {},
+  addEventListener: function () { },
+  removeEventListener: function () { },
+  media: '',
+  onchange: emptyFn,
+  dispatchEvent: function(evt: Event) { return true; },
+}));
 
 describe('Snackbar', () => {
   it('should render without crashing', () => {

@@ -25,6 +25,7 @@
   },
   "devDependencies": {
     "@jasmith79/global-this": "0.0.1",
+    "@jasmith79/ts-utils": "0.0.1",
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.18",
@@ -51,5 +52,7 @@
     "react": "^16.10.2",
     "react-dom": "^16.10.2"
   },
-  "dependencies": {}
+  "dependencies": {
+    "clsx": "^1.0.4"
+  }
 }

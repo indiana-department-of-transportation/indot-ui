@@ -25,6 +25,7 @@ const Error_1 = __importDefault(require("@material-ui/icons/Error"));
 const Info_1 = __importDefault(require("@material-ui/icons/Info"));
 const Close_1 = __importDefault(require("@material-ui/icons/Close"));
 const Warning_1 = __importDefault(require("@material-ui/icons/Warning"));
+const ts_utils_1 = require("@jasmith79/ts-utils");
 var variants;
 (function (variants) {
     variants["success"] = "success";
@@ -32,7 +33,6 @@ var variants;
     variants["error"] = "error";
     variants["info"] = "info";
 })(variants || (variants = {}));
-const emptyFn = (...args) => { };
 const DEFAULT_ANCHOR = {
     horizontal: 'left',
     vertical: 'top',
@@ -45,14 +45,12 @@ const DEFAULT_SNACKBAR_PROPS = {
     action: '',
     closer: undefined,
     verticalAlign: 'bottom',
-    horizontalAlign: window.matchMedia('(width > 600px)')
-        ? 'center'
-        : 'left',
-    onAction: emptyFn,
-    onClose: emptyFn,
+    horizontalAlign: 'center',
+    onAction: ts_utils_1.emptyFn,
+    onClose: ts_utils_1.emptyFn,
     className: '',
 };
-const useStyles = styles_1.makeStyles(theme => ({
+const useStyles = styles_1.makeStyles((theme) => ({
     primary: {
         backgroundColor: theme.palette.primary.main,
     },
@@ -137,9 +135,9 @@ exports.DefaultActionButton.propTypes = {
  * @param {string} props.className The style class from the caller.
  * @returns {React.FunctionComponent} The Snackbar component.
  */
-exports.TMCSnackbar = ({ message, variant, timeout = 5000, color = 'primary', action = null, closer = null, verticalAlign = 'bottom', horizontalAlign = window.matchMedia('(width > 600px)')
+exports.TMCSnackbar = ({ message, variant, timeout = 5000, color = 'primary', action = null, closer = null, verticalAlign = 'bottom', horizontalAlign = window.matchMedia('(width > 600px)').matches
     ? 'center'
-    : 'left', onAction = emptyFn, onClose = emptyFn, className = '', }) => {
+    : 'left', onAction = ts_utils_1.emptyFn, onClose = ts_utils_1.emptyFn, className = '', }) => {
     const classes = useStyles();
     const snackProps = {
         onClose,
@@ -198,7 +196,7 @@ exports.TMCSnackbar = ({ message, variant, timeout = 5000, color = 'primary', ac
             contentProps.action = [];
         contentProps.action.push(onClose
             ? react_1.default.createElement(CloseButton, { key: 1, onClick: onClose })
-            : react_1.default.createElement(CloseButton, { key: 1, onClick: emptyFn }));
+            : react_1.default.createElement(CloseButton, { key: 1, onClick: ts_utils_1.emptyFn }));
     }
     return (react_1.default.createElement(Snackbar_1.default, Object.assign({}, snackProps),
         react_1.default.createElement(SnackbarContent_1.default, Object.assign({}, contentProps))));
