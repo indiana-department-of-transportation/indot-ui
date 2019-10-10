@@ -1,6 +1,6 @@
 {
   "name": "ncolumngrid",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Creates a 1, 2, or 3 column grid layout",
   "main": "dist/NColumnGrid.js",
   "scripts": {

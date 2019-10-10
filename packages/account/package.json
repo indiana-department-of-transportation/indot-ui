@@ -1,6 +1,6 @@
 {
   "name": "@indot/account",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "Account component for @indot-ui",
   "main": "dist/Account.js",
   "scripts": {
