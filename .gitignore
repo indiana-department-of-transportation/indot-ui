@@ -63,5 +63,8 @@ typings/
 # compiled test files
 packages/*/dist/*.test*
 
+# mac
+*.DS_Store*
+
 diff.txt
 commit-msg.txt

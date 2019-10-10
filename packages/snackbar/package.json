@@ -1,0 +1,58 @@
+{
+  "name": "@indot/snackbar",
+  "version": "0.0.1",
+  "description": "React Material-UI snackbar",
+  "main": "dist/Snackbar",
+  "scripts": {
+    "test": "jest",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build": "npm run build:ts && npm run gen-docs && npm run no-jekyll",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:ts": "tsc",
+    "gen-docs": "typedoc --readme README.md --excludeNotExported --ignoreCompilerErrors --exclude '{**/*spec*,**/node_modules/**,**/spec/**}' --out docs ./src",
+    "no-jekyll": "touch docs/.nojekyll"
+  },
+  "keywords": [
+    "React",
+    "Material-UI",
+    "snackbar"
+  ],
+  "author": "jarsmith@indot.in.gov",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
+  "devDependencies": {
+    "@jasmith79/global-this": "0.0.1",
+    "@jasmith79/ts-utils": "^0.1.0",
+    "@types/enzyme": "^3.10.3",
+    "@types/enzyme-adapter-react-16": "^1.0.5",
+    "@types/jest": "^24.0.18",
+    "@types/prop-types": "^15.7.3",
+    "@types/react": "^16.9.5",
+    "@types/react-dom": "^16.9.1",
+    "@types/react-router": "^5.1.1",
+    "@types/react-router-dom": "^5.1.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "install-peers": "^1.0.3",
+    "jest": "^24.9.0",
+    "jsdom": "^15.1.1",
+    "jsdom-global": "^3.0.2",
+    "ts-jest": "^24.1.0",
+    "tslint": "^5.20.0",
+    "typedoc": "^0.15.0",
+    "typescript": "^3.6.3"
+  },
+  "peerDependencies": {
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.5.0",
+    "@material-ui/icons": "^4.4.3",
+    "clsx": "^1.0.4",
+    "prop-types": "^15.7.2"
+  }
+}

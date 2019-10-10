@@ -1,0 +1,34 @@
+{
+  "name": "@indot/material-theme",
+  "version": "0.0.1",
+  "description": "Material UI theme for INDOT TMC applications.",
+  "main": "dist/theme.js",
+  "scripts": {
+    "test": "jest",
+    "type-check": "tsc --noEmit",
+    "type-check:watch": "npm run type-check -- --watch",
+    "build": "npm run build:ts && npm run gen-docs",
+    "build:types": "tsc --emitDeclarationOnly",
+    "build:ts": "tsc",
+    "build:docs": "typedoc --readme README.md --excludeNotExported --ignoreCompilerErrors --exclude '{**/*spec*,**/node_modules/**,**/spec/**}' --out docs ./src",
+    "gen-docs": "npm run build:docs && npm run no-jekyll",
+    "no-jekyll": "touch docs/.nojekyll"
+  },
+  "keywords": [
+    "React",
+    "Material-UI",
+    "theme"
+  ],
+  "author": "jarsmith",
+  "license": "MIT",
+  "peerDependencies": {
+    "react": "^16.10.2",
+    "react-dom": "^16.10.2"
+  },
+  "dependencies": {
+    "@material-ui/core": "^4.5.0"
+  },
+  "devDependencies": {
+    "install-peers": "^1.0.3"
+  }
+}
