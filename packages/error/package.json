@@ -47,5 +47,6 @@
   "dependencies": {
     "@indot/tmclogger": "0.0.3",
     "prop-types": "^15.7.2"
-  }
+  },
+  "gitHead": "897417daa823d53b0bb348115ebb4b9e612de626"
 }

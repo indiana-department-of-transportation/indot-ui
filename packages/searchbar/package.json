@@ -46,5 +46,9 @@
     "@material-ui/core": "^4.5.0",
     "@material-ui/icons": "^4.4.3",
     "prop-types": "^15.7.2"
-  }
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "gitHead": "897417daa823d53b0bb348115ebb4b9e612de626"
 }
