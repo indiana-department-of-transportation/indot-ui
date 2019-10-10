@@ -21,7 +21,6 @@
   "author": "jarsmith@indot.in.gov",
   "license": "MIT",
   "peerDependencies": {
-    "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2"
   },
@@ -46,6 +45,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@indot/tmclogger": "0.0.3"
+    "@indot/tmclogger": "0.0.3",
+    "prop-types": "^15.7.2"
   }
 }

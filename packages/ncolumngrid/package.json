@@ -26,8 +26,6 @@
   "author": "jasmith79",
   "license": "MIT",
   "peerDependencies": {
-    "@material-ui/core": "^4.5.0",
-    "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2"
   },
@@ -52,5 +50,8 @@
     "typedoc": "^0.15.0",
     "typescript": "^3.6.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@material-ui/core": "^4.5.0",
+    "prop-types": "^15.7.2"
+  }
 }

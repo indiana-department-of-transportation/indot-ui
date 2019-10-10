@@ -21,11 +21,8 @@
   "author": "jarsmith@indot.in.gov",
   "license": "MIT",
   "peerDependencies": {
-    "formik": "^1.5.8",
-    "prop-types": "^15.7.2",
     "react": "^16.10.2",
-    "react-dom": "^16.10.2",
-    "react-router-dom": "^5.1.2"
+    "react-dom": "^16.10.2"
   },
   "devDependencies": {
     "@jasmith79/global-this": "0.0.1",
@@ -50,5 +47,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "dependencies": {}
+  "dependencies": {
+    "formik": "^1.5.8",
+    "prop-types": "^15.7.2",
+    "react-router-dom": "^5.1.2"
+  }
 }

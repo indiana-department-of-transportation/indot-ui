@@ -22,12 +22,8 @@
   "author": "jarsmith@indot.in.gov",
   "license": "MIT",
   "peerDependencies": {
-    "@material-ui/core": "^4.5.0",
-    "@material-ui/icons": "^4.4.3",
-    "prop-types": "^15.7.2",
     "react": "^16.10.2",
-    "react-dom": "^16.10.2",
-    "react-router-dom": "^5.1.2"
+    "react-dom": "^16.10.2"
   },
   "devDependencies": {
     "@types/enzyme": "^3.10.3",
@@ -48,5 +44,10 @@
     "typedoc": "^0.15.0",
     "typescript": "^3.6.3"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@material-ui/core": "^4.5.0",
+    "@material-ui/icons": "^4.4.3",
+    "prop-types": "^15.7.2",
+    "react-router-dom": "^5.1.2"
+  }
 }
