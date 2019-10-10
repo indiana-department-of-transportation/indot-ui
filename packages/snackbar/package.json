@@ -1,6 +1,6 @@
 {
   "name": "@indot/snackbar",
-  "version": "0.0.1",
+  "version": "0.0.4",
   "description": "React Material-UI snackbar",
   "main": "dist/Snackbar",
   "scripts": {
@@ -54,5 +54,10 @@
     "@material-ui/icons": "^4.4.3",
     "clsx": "^1.0.4",
     "prop-types": "^15.7.2"
+<<<<<<< HEAD
   }
+=======
+  },
+  "gitHead": "897417daa823d53b0bb348115ebb4b9e612de626"
+>>>>>>> master
 }

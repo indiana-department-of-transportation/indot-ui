@@ -1,6 +1,10 @@
 {
   "name": "@indot/pagecontent",
+<<<<<<< HEAD
   "version": "0.0.1",
+=======
+  "version": "0.0.4",
+>>>>>>> master
   "description": "INDOT React content holder",
   "main": "dist/PageContent.js",
   "scripts": {
@@ -46,5 +50,6 @@
   "dependencies": {
     "@material-ui/core": "^4.5.0",
     "prop-types": "^15.7.2"
-  }
+  },
+  "gitHead": "897417daa823d53b0bb348115ebb4b9e612de626"
 }

@@ -1,6 +1,10 @@
 {
   "name": "@indot/error",
+<<<<<<< HEAD
   "version": "0.0.1",
+=======
+  "version": "0.0.4",
+>>>>>>> master
   "description": "INDOT Error React Component",
   "main": "dist/TMCError.js",
   "scripts": {
@@ -47,5 +51,6 @@
   "dependencies": {
     "@indot/tmclogger": "0.0.3",
     "prop-types": "^15.7.2"
-  }
+  },
+  "gitHead": "897417daa823d53b0bb348115ebb4b9e612de626"
 }
