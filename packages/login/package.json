@@ -51,10 +51,6 @@
     "formik": "^1.5.8",
     "prop-types": "^15.7.2",
     "react-router-dom": "^5.1.2"
-<<<<<<< HEAD
-  }
-=======
   },
   "gitHead": "897417daa823d53b0bb348115ebb4b9e612de626"
->>>>>>> master
 }

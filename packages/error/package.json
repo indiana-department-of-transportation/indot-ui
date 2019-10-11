@@ -1,10 +1,6 @@
 {
   "name": "@indot/error",
-<<<<<<< HEAD
-  "version": "0.0.1",
-=======
   "version": "0.0.4",
->>>>>>> master
   "description": "INDOT Error React Component",
   "main": "dist/TMCError.js",
   "scripts": {

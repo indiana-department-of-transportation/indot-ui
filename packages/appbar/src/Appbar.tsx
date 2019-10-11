@@ -18,7 +18,6 @@ import ToolBar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
 import Accnt from '@indot/account';
-import Searchbar from '@indot/searchbar';
 // import theme from '@indot/material-theme'
 
 import * as INDOTLogo from '../img/indot.png';

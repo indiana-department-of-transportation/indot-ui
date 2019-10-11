@@ -1,10 +1,6 @@
 {
   "name": "@indot/tmcmap",
-<<<<<<< HEAD
-  "version": "0.0.1",
-=======
   "version": "0.0.4",
->>>>>>> master
   "description": "INDOT leaflat Map components",
   "main": "dist/TMCMap.js",
   "scripts": {
