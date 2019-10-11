@@ -26,7 +26,7 @@ const AppBar_1 = __importDefault(require("@material-ui/core/AppBar"));
 const Toolbar_1 = __importDefault(require("@material-ui/core/Toolbar"));
 const Typography_1 = __importDefault(require("@material-ui/core/Typography"));
 const account_1 = __importDefault(require("@indot/account"));
-// import theme from '@indot/material-theme'
+const material_theme_1 = __importDefault(require("@indot/material-theme"));
 const INDOTLogo = __importStar(require("../img/indot.png"));
 /**
  * @description A simple app bar for TMC Applications.
@@ -39,7 +39,7 @@ exports.TMCAppbar = ({ title, Searchbar, }) => (react_1.default.createElement(Ap
     react_1.default.createElement(Toolbar_1.default, null,
         react_1.default.createElement(react_router_dom_1.Link, { to: "/" },
             react_1.default.createElement("img", { src: String(INDOTLogo), alt: "INDOT logo", style: { width: '48px', height: '48px' } })),
-        react_1.default.createElement(Typography_1.default, { variant: "h6", style: { marginLeft: '10px' } }, title),
+        react_1.default.createElement(Typography_1.default, { variant: "h6", style: { marginLeft: material_theme_1.default.spacing(2) } }, title),
         Searchbar)));
 exports.TMCAppbar.defaultProps = {
     Searchbar: undefined,
@@ -62,7 +62,7 @@ exports.TMCUserAppbar = ({ title, Searchbar, user = { userName: '' }, logoff = t
     react_1.default.createElement(Toolbar_1.default, null,
         react_1.default.createElement(react_router_dom_1.Link, { to: "/" },
             react_1.default.createElement("img", { src: INDOTLogo, alt: "INDOT logo", style: { width: '48px', height: '48px' } })),
-        react_1.default.createElement(Typography_1.default, { variant: "h6", style: { marginLeft: '10px' } }, title),
+        react_1.default.createElement(Typography_1.default, { variant: "h6", style: { marginLeft: material_theme_1.default.spacing(2) } }, title),
         Searchbar,
         react_1.default.createElement("div", { style: {
                 display: 'flex',
