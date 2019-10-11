@@ -30,13 +30,9 @@
   },
   "devDependencies": {
     "install-peers": "^1.0.3"
-<<<<<<< HEAD
-  }
-=======
   },
   "publishConfig": {
     "access": "public"
   },
   "gitHead": "897417daa823d53b0bb348115ebb4b9e612de626"
->>>>>>> master
 }
