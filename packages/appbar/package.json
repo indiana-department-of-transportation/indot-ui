@@ -43,6 +43,9 @@
     "typescript": "^3.6.3"
   },
   "dependencies": {
+    "@indot/account": "0.0.4",
+    "@indot/material-theme": "0.0.4",
+    "@jasmith79/ts-utils": "^0.1.0",
     "@material-ui/core": "^4.5.0",
     "@material-ui/icons": "^4.4.3",
     "prop-types": "^15.7.2",

@@ -13,14 +13,12 @@
     "allowSyntheticDefaultImports": true,
     "esModuleInterop": true,
     "experimentalDecorators": true,
-    "jsx": "react",
-    "skipLibCheck": true
+    "jsx": "react"
   },
   "include": [
     "./src/*.ts",
     "./src/*.tsx",
     "./src/ts/**/*",
-    "./src/@types/**/*",
-    "./img/*"
+    "./src/@types/**/*"
   ]
 }
