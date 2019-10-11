@@ -1,6 +1,6 @@
 {
   "name": "@indot/appbar",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "Appbar for INDOT TMC React applications",
   "main": "dist/Appbar.js",
   "scripts": {
@@ -43,8 +43,8 @@
     "typescript": "^3.6.3"
   },
   "dependencies": {
-    "@indot/account": "^0.0.5",
-    "@indot/material-theme": "0.0.5",
+    "@indot/account": "^0.0.6",
+    "@indot/material-theme": "^0.0.6",
     "@jasmith79/ts-utils": "^0.1.0",
     "@material-ui/core": "^4.5.0",
     "@material-ui/icons": "^4.4.3",
