@@ -18,7 +18,7 @@ import ToolBar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 
 import Accnt from '@indot/account';
-// import theme from '@indot/material-theme'
+import theme from '@indot/material-theme'
 
 import * as INDOTLogo from '../img/indot.png';
 
@@ -57,7 +57,7 @@ export const TMCAppbar = ({
             style={{ width: '48px', height: '48px' }}
           />
         </Link>
-        <Typography variant="h6" style={{ marginLeft: '10px' }}>
+        <Typography variant="h6" style={{ marginLeft: theme.spacing(2) }}>
           {title}
         </Typography>
         {Searchbar}
@@ -100,7 +100,7 @@ export const TMCUserAppbar = ({
           style={{ width: '48px', height: '48px' }}
         />
       </Link>
-      <Typography variant="h6" style={{ marginLeft: '10px' }}>
+      <Typography variant="h6" style={{ marginLeft: theme.spacing(2) }}>
         {title}
       </Typography>
       {Searchbar}
