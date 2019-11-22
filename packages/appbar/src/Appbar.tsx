@@ -20,7 +20,7 @@ import Typography from '@material-ui/core/Typography';
 import Accnt from '@indot/account';
 import theme from '@indot/material-theme'
 
-import * as INDOTLogo from '../img/indot.png';
+import INDOTLogo from './indot-logo';
 
 interface IAppbarUser extends IPojo {
   userName: string,
@@ -52,7 +52,7 @@ export const TMCAppbar = ({
       <ToolBar>
         <Link to="/">
           <img
-            src={String(INDOTLogo)}
+            src={`data:image/png;base64, ${INDOTLogo}`}
             alt="INDOT logo"
             style={{ width: '48px', height: '48px' }}
           />
