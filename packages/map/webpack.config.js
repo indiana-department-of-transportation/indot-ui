@@ -1,7 +1,7 @@
 const path = require('path');
 
 module.exports = {
-  entry: './src/TMCMap.tsx',
+  entry: './src/index.ts',
   devtool: 'inline-source-map',
   module: {
     rules: [
@@ -21,10 +21,10 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.css'],
+    extensions: ['.tsx', '.ts', '.js', '.css', '.png'],
   },
   output: {
-    filename: 'TMCMap.js',
+    filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
   },
 };
