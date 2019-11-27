@@ -16,9 +16,9 @@ import { emptyFn, IPojo } from '@jasmith79/ts-utils';
 import AppBar from '@material-ui/core/AppBar';
 import ToolBar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
+import { useTheme } from '@material-ui/core/styles';
 
 import Accnt from '@indot/account';
-import theme from '@indot/material-theme'
 
 import INDOTLogo from './indot-logo';
 
@@ -47,7 +47,9 @@ interface ILoginAppbarProps extends IPlainAppBarProps {
 export const TMCAppbar = ({
   title,
   Searchbar,
-}: IPlainAppBarProps) => (
+}: IPlainAppBarProps) => {
+  const theme = useTheme();
+  return (
     <AppBar>
       <ToolBar>
         <Link to="/">
@@ -63,7 +65,8 @@ export const TMCAppbar = ({
         {Searchbar}
       </ToolBar>
     </AppBar>
-);
+  )
+};
 
 TMCAppbar.defaultProps = {
   Searchbar: undefined,
@@ -90,32 +93,35 @@ export const TMCUserAppbar = ({
   user = { userName: '' },
   logoff = emptyFn,
   Account = <Accnt userName={user.userName} logoff={logoff} />,
-}: ILoginAppbarProps) => (
-  <AppBar>
-    <ToolBar>
-      <Link to="/">
-        <img
-          src={INDOTLogo}
-          alt="INDOT logo"
-          style={{ width: '48px', height: '48px' }}
-        />
-      </Link>
-      <Typography variant="h6" style={{ marginLeft: theme.spacing(2) }}>
-        {title}
-      </Typography>
-      {Searchbar}
-      <div style={{
-        display: 'flex',
-        flexWrap: 'nowrap',
-        justifyContent: 'flex-end',
-        flexGrow: 4,
-      }}
-      >
-        {Account}
-      </div>
-    </ToolBar>
-  </AppBar>
-);
+}: ILoginAppbarProps) => {
+  const theme = useTheme();
+  return (
+    <AppBar>
+      <ToolBar>
+        <Link to="/">
+          <img
+            src={INDOTLogo}
+            alt="INDOT logo"
+            style={{ width: '48px', height: '48px' }}
+          />
+        </Link>
+        <Typography variant="h6" style={{ marginLeft: theme.spacing(2) }}>
+          {title}
+        </Typography>
+        {Searchbar}
+        <div style={{
+          display: 'flex',
+          flexWrap: 'nowrap',
+          justifyContent: 'flex-end',
+          flexGrow: 4,
+        }}
+        >
+          {Account}
+        </div>
+      </ToolBar>
+    </AppBar>
+  );
+};
 
 TMCUserAppbar.defaultProps = {
   user: { userName: '' },
