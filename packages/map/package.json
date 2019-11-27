@@ -2,17 +2,18 @@
   "name": "@indot/tmcmap",
   "version": "0.0.6",
   "description": "INDOT leaflat Map components",
-  "main": "dist/TMCMap.js",
+  "main": "dist/index.js",
   "scripts": {
     "test": "jest",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch",
-    "build": "npm run build:ts && npm run gen-docs",
+    "build": "npm run babely && npm run build:types && npm run gen-docs",
     "build:types": "tsc --emitDeclarationOnly",
     "build:ts": "tsc",
     "build:docs": "typedoc --readme README.md --excludeNotExported --ignoreCompilerErrors --exclude '{**/*spec*,**/node_modules/**,**/spec/**}' --out docs ./src",
     "gen-docs": "npm run build:docs && npm run no-jekyll",
-    "no-jekyll": "touch docs/.nojekyll"
+    "no-jekyll": "touch docs/.nojekyll",
+    "babely": "babel src/* -d dist --extensions '.ts,.tsx'"
   },
   "keywords": [
     "React",
@@ -22,33 +23,51 @@
   "author": "jarsmith@indot.in.gov",
   "license": "MIT",
   "dependencies": {
-    "leaflet": "^1.5.1",
-    "prop-types": "^15.7.2",
+    "leaflet": "^1.6.0",
     "react-leaflet": "^2.4.0"
   },
   "peerDependencies": {
+    "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2"
   },
   "devDependencies": {
+    "@babel/cli": "^7.7.4",
+    "@babel/core": "^7.7.4",
+    "@babel/plugin-proposal-class-properties": "^7.7.4",
+    "@babel/plugin-proposal-object-rest-spread": "^7.7.4",
+    "@babel/plugin-transform-async-to-generator": "^7.7.4",
+    "@babel/preset-env": "^7.7.4",
+    "@babel/preset-react": "^7.7.4",
+    "@babel/preset-typescript": "^7.7.4",
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.18",
     "@types/leaflet": "^1.5.2",
     "@types/react": "^16.9.5",
     "@types/react-leaflet": "^2.4.0",
+    "babel-loader": "^8.0.6",
+    "css-loader": "^3.2.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
+    "html-webpack-plugin": "^3.2.0",
     "install-peers": "^1.0.3",
     "jest": "^24.9.0",
     "jsdom": "^15.1.1",
     "jsdom-global": "^3.0.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2",
+    "source-map-loader": "^0.2.4",
+    "style-loader": "^1.0.0",
     "ts-jest": "^24.1.0",
+    "ts-loader": "^6.2.1",
     "tslint": "^5.20.0",
     "typedoc": "^0.15.0",
-    "typescript": "^3.6.3"
+    "typescript": "^3.6.3",
+    "url-loader": "^2.3.0",
+    "webpack": "^4.41.2",
+    "webpack-cli": "^3.3.10",
+    "webpack-dev-server": "^3.9.0"
   },
   "publishConfig": {
     "access": "public"

@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;Searchbar&quot; | @indot/searchbar</title>
+	<title>&quot;indot-logo&quot; | @indot/appbar</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@indot/searchbar</a>
+					<a href="../index.html" class="title">@indot/appbar</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -54,69 +54,16 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="_searchbar_.html">&quot;Searchbar&quot;</a>
+					<a href="_indot_logo_.html">&quot;indot-logo&quot;</a>
 				</li>
 			</ul>
-			<h1>External module &quot;Searchbar&quot;</h1>
+			<h1>External module &quot;indot-logo&quot;</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel-group tsd-index-group">
-				<h2>Index</h2>
-				<section class="tsd-panel tsd-index-panel">
-					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
-							<h3>Variables</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="_searchbar_.html#searchbar" class="tsd-kind-icon">Searchbar</a></li>
-							</ul>
-						</section>
-					</div>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Variables</h2>
-				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
-					<a name="searchbar" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagConst">Const</span> Searchbar</h3>
-					<div class="tsd-signature tsd-kind-icon">Searchbar<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ForwardRefExoticComponent</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ISearchbarProps</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">RefAttributes</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;React.forwardRef(({onSearch,onChange &#x3D; noop,placeholder &#x3D; &#x27;Search…&#x27;,// eslint-disable-next-line no-unused-vars}: ISearchbarProps, ref) &#x3D;&gt; {const classes &#x3D; useStyles();const [currentValue, setValue] &#x3D; useState(&#x27;&#x27;);const onKeyPress &#x3D; (evt: IKeyCode) &#x3D;&gt; {if (evt.keyCode &#x3D;&#x3D;&#x3D; 13 || (evt.key &amp;&amp; evt.key &#x3D;&#x3D;&#x3D; &#x27;enter&#x27;)) {onSearch(currentValue);}};const changeHandler &#x3D; (evt: IChange) &#x3D;&gt; {const val &#x3D; evt.target ? (evt.target as HTMLInputElement).value : null;setValue(val || &#x27;&#x27;);onChange(evt);};return (&lt;div className&#x3D;{classes.search}&gt;&lt;div className&#x3D;{classes.searchIcon}&gt;&lt;SearchIcon onClick&#x3D;{() &#x3D;&gt; onSearch(currentValue)} /&gt;&lt;/div&gt;&lt;InputBaseplaceholder&#x3D;{placeholder}onChange&#x3D;{changeHandler}onKeyDown&#x3D;{onKeyPress}value&#x3D;{currentValue}classes&#x3D;{{root: classes.inputRoot,input: classes.inputInput,}}/&gt;&lt;/div&gt;);})</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/indiana-department-of-transportation/indot-ui/blob/6f6bad0/packages/searchbar/src/Searchbar.tsx#L91">Searchbar.tsx:91</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<dl class="tsd-comment-tags">
-							<dt>description</dt>
-							<dd><p>Searchbar for TMC Applications.</p>
-							</dd>
-							<dt>param</dt>
-							<dd><p>The destructured props object.</p>
-							</dd>
-							<dt>param</dt>
-							<dd><p>The function to be called when searching. Triggered by an enter
-								keypress in the search input or a click on the search icon.</p>
-							</dd>
-							<dt>param</dt>
-							<dd><p>An optional onChange handler to e.g. Filter results while the
-								user is typing.</p>
-							</dd>
-							<dt>param</dt>
-							<dd><p>Placeholder text for the search input. Defaults to &#39;Search...&#39;.</p>
-							</dd>
-							<dt>param</dt>
-							<dd><p>The React DOM ref, needed because MUI Tooltip requires it.</p>
-							</dd>
-							<dt>returns</dt>
-							<dd><p>The Searchbar component.</p>
-							</dd>
-						</dl>
-					</div>
-				</section>
-			</section>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
@@ -124,19 +71,19 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class="current tsd-kind-external-module">
-						<a href="_searchbar_.html">"<wbr>Searchbar"</a>
+					<li class=" tsd-kind-external-module">
+						<a href="_appbar_.html">"<wbr>Appbar"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_searchbar_test_.html">"<wbr>Searchbar.test"</a>
+						<a href="_appbar_test_.html">"<wbr>Appbar.test"</a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="_indot_logo_.html">"indot-<wbr>logo"</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
-						<a href="_searchbar_.html#searchbar" class="tsd-kind-icon">Searchbar</a>
-					</li>
 				</ul>
 			</nav>
 		</div>

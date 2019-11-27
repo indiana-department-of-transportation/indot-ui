@@ -10,13 +10,6 @@
 var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
-var __importStar = (this && this.__importStar) || function (mod) {
-    if (mod && mod.__esModule) return mod;
-    var result = {};
-    if (mod != null) for (var k in mod) if (Object.hasOwnProperty.call(mod, k)) result[k] = mod[k];
-    result["default"] = mod;
-    return result;
-};
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const prop_types_1 = __importDefault(require("prop-types"));
@@ -25,9 +18,9 @@ const ts_utils_1 = require("@jasmith79/ts-utils");
 const AppBar_1 = __importDefault(require("@material-ui/core/AppBar"));
 const Toolbar_1 = __importDefault(require("@material-ui/core/Toolbar"));
 const Typography_1 = __importDefault(require("@material-ui/core/Typography"));
+const styles_1 = require("@material-ui/core/styles");
 const account_1 = __importDefault(require("@indot/account"));
-const material_theme_1 = __importDefault(require("@indot/material-theme"));
-const INDOTLogo = __importStar(require("../img/indot.png"));
+const indot_logo_1 = __importDefault(require("./indot-logo"));
 /**
  * @description A simple app bar for TMC Applications.
  * @param {Object} [props] The destructured props object.
@@ -35,12 +28,15 @@ const INDOTLogo = __importStar(require("../img/indot.png"));
  * @param {React.Component} props.Searchbar An optional searchbar component.
  * @returns {React.FunctionComponent} The Appbar component.
  */
-exports.TMCAppbar = ({ title, Searchbar, }) => (react_1.default.createElement(AppBar_1.default, null,
-    react_1.default.createElement(Toolbar_1.default, null,
-        react_1.default.createElement(react_router_dom_1.Link, { to: "/" },
-            react_1.default.createElement("img", { src: String(INDOTLogo), alt: "INDOT logo", style: { width: '48px', height: '48px' } })),
-        react_1.default.createElement(Typography_1.default, { variant: "h6", style: { marginLeft: material_theme_1.default.spacing(2) } }, title),
-        Searchbar)));
+exports.TMCAppbar = ({ title, Searchbar, }) => {
+    const theme = styles_1.useTheme();
+    return (react_1.default.createElement(AppBar_1.default, null,
+        react_1.default.createElement(Toolbar_1.default, null,
+            react_1.default.createElement(react_router_dom_1.Link, { to: "/" },
+                react_1.default.createElement("img", { src: `data:image/png;base64, ${indot_logo_1.default}`, alt: "INDOT logo", style: { width: '48px', height: '48px' } })),
+            react_1.default.createElement(Typography_1.default, { variant: "h6", style: { marginLeft: theme.spacing(2) } }, title),
+            Searchbar)));
+};
 exports.TMCAppbar.defaultProps = {
     Searchbar: undefined,
 };
@@ -58,18 +54,21 @@ exports.TMCAppbar.propTypes = {
  * @param {React.Component} props.Account An optional account management component.
  * @returns {React.FunctionComponent} The Appbar component.
  */
-exports.TMCUserAppbar = ({ title, Searchbar, user = { userName: '' }, logoff = ts_utils_1.emptyFn, Account = react_1.default.createElement(account_1.default, { userName: user.userName, logoff: logoff }), }) => (react_1.default.createElement(AppBar_1.default, null,
-    react_1.default.createElement(Toolbar_1.default, null,
-        react_1.default.createElement(react_router_dom_1.Link, { to: "/" },
-            react_1.default.createElement("img", { src: INDOTLogo, alt: "INDOT logo", style: { width: '48px', height: '48px' } })),
-        react_1.default.createElement(Typography_1.default, { variant: "h6", style: { marginLeft: material_theme_1.default.spacing(2) } }, title),
-        Searchbar,
-        react_1.default.createElement("div", { style: {
-                display: 'flex',
-                flexWrap: 'nowrap',
-                justifyContent: 'flex-end',
-                flexGrow: 4,
-            } }, Account))));
+exports.TMCUserAppbar = ({ title, Searchbar, user = { userName: '' }, logoff = ts_utils_1.emptyFn, Account = react_1.default.createElement(account_1.default, { userName: user.userName, logoff: logoff }), }) => {
+    const theme = styles_1.useTheme();
+    return (react_1.default.createElement(AppBar_1.default, null,
+        react_1.default.createElement(Toolbar_1.default, null,
+            react_1.default.createElement(react_router_dom_1.Link, { to: "/" },
+                react_1.default.createElement("img", { src: indot_logo_1.default, alt: "INDOT logo", style: { width: '48px', height: '48px' } })),
+            react_1.default.createElement(Typography_1.default, { variant: "h6", style: { marginLeft: theme.spacing(2) } }, title),
+            Searchbar,
+            react_1.default.createElement("div", { style: {
+                    display: 'flex',
+                    flexWrap: 'nowrap',
+                    justifyContent: 'flex-end',
+                    flexGrow: 4,
+                } }, Account))));
+};
 exports.TMCUserAppbar.defaultProps = {
     user: { userName: '' },
     logoff: ts_utils_1.emptyFn,
