@@ -1,7 +1,12 @@
 const path = require('path');
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+const htmlWebpackPlugin = new HtmlWebpackPlugin({
+  template: path.join(__dirname, "demo/index.html"),
+  filename: "./index.html"
+});
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: path.join(__dirname, 'demo/index.js'),
   devtool: 'inline-source-map',
   module: {
     rules: [
@@ -20,11 +25,15 @@ module.exports = {
       }
     ],
   },
+  plugins: [htmlWebpackPlugin],
   resolve: {
-    extensions: ['.tsx', '.ts', '.js', '.css', '.png'],
+    extensions: ['.tsx', '.ts', '.js', '.jsx'],
   },
   output: {
     filename: 'index.js',
     path: path.resolve(__dirname, 'dist'),
+  },
+  devServer: {
+    port: 8081,
   },
 };
