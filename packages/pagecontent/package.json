@@ -1,6 +1,6 @@
 {
   "name": "@indot/pagecontent",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "description": "INDOT React content holder",
   "main": "dist/PageContent.js",
   "scripts": {
