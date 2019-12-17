@@ -9,6 +9,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Icon } from 'leaflet';
 interface IMapProps {
     position?: [number, number];
     tileURL?: string;
@@ -20,6 +21,23 @@ interface IPolyProps {
     color?: string;
     weight?: number;
     children?: React.ReactNode;
+}
+interface IMarkerOptions {
+    icon: Icon;
+    keyboard: boolean;
+    title: string;
+    alt: string;
+    zIndexOffset: number;
+    opacity: number;
+    riseOnHover: boolean;
+    riseOffset: number;
+    pane: string;
+    bubblingMouseEvents: boolean;
+}
+interface IMarkerProps {
+    position: [number, number];
+    children?: React.ReactNode;
+    markerOptions: Partial<IMarkerOptions>;
 }
 /**
  * @description The TMC leaflet map component.
@@ -68,6 +86,27 @@ export declare const TMCPoly: {
         color: PropTypes.Requireable<string>;
         weight: PropTypes.Requireable<number>;
         children: PropTypes.Requireable<PropTypes.ReactNodeLike>;
+    };
+};
+export declare const TMCMarker: {
+    ({ position, markerOptions, children, }: IMarkerProps): JSX.Element;
+    propTypes: {
+        position: PropTypes.Validator<(number | null | undefined)[]>;
+        markerOptions: PropTypes.Requireable<PropTypes.InferProps<{
+            icon: PropTypes.Requireable<Icon<any>>;
+            keyboard: PropTypes.Requireable<boolean>;
+            title: PropTypes.Requireable<string>;
+            alt: PropTypes.Requireable<string>;
+            zIndexOffset: PropTypes.Requireable<number>;
+            opacity: PropTypes.Requireable<number>;
+            riseOnHover: PropTypes.Requireable<boolean>;
+            riseOffset: PropTypes.Requireable<number>;
+            pane: PropTypes.Requireable<string>;
+            bubblingMouseEvents: PropTypes.Requireable<boolean>;
+        }>>;
+    };
+    defaultProps: {
+        markerOptions: {};
     };
 };
 export {};

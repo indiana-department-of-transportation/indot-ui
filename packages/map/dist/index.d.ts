@@ -1,5 +1,6 @@
 import 'leaflet/dist/leaflet.css';
 import 'leaflet';
-import { TMCMap, TMCPoly } from './TMCMap';
-export { TMCMap, TMCPoly };
+import { TMCMap, TMCPoly, TMCMarker } from './TMCMap';
+declare const L: typeof import("leaflet");
+export { TMCMap, TMCPoly, TMCMarker, L };
 export default TMCMap;

@@ -2,6 +2,7 @@
 // since leaflet doesn't bundle this upstream.
 import 'leaflet/dist/leaflet.css';
 import 'leaflet';
-import { TMCMap, TMCPoly } from './TMCMap';
-export { TMCMap, TMCPoly };
+import { TMCMap, TMCPoly, TMCMarker } from './TMCMap';
+const L = window.L;
+export { TMCMap, TMCPoly, TMCMarker, L };
 export default TMCMap;
