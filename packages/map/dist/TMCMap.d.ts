@@ -93,7 +93,7 @@ export declare const TMCMarker: {
     propTypes: {
         position: PropTypes.Validator<(number | null | undefined)[]>;
         markerOptions: PropTypes.Requireable<PropTypes.InferProps<{
-            icon: PropTypes.Requireable<Icon<any>>;
+            icon: PropTypes.Requireable<Icon<import("leaflet").BaseIconOptions>>;
             keyboard: PropTypes.Requireable<boolean>;
             title: PropTypes.Requireable<string>;
             alt: PropTypes.Requireable<string>;
