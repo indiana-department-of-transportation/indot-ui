@@ -15,9 +15,15 @@ import {
   Icon,
   DivIcon,
 } from 'leaflet';
-import { Popup, Marker } from 'react-leaflet';
+import { Marker } from 'react-leaflet';
 
+import TMCLeafletBase from './TMCLeafletBase';
 import markerIconImg from './marker-icon';
+
+export const DEFAULT_MARKER_ICON = LeafletIcon({
+  iconUrl: `data:image/png;base64, ${markerIconImg}`,
+  iconSize: [38, 55]
+});
 
 interface IMarkerOptions {
   icon: DivIcon | Icon | undefined,
@@ -34,40 +40,43 @@ interface IMarkerOptions {
 
 interface IMarkerProps {
   position: [number, number],
+  tooltip?: React.ReactNode,
   children?: React.ReactNode,
   markerOptions: Partial<IMarkerOptions>
 }
 
+/**
+ * @description The TMC leaflet marker component.
+ *
+ * @param [props] The destructured props object.
+ * @param props.position {Array} The latlng pair to center the map on.
+ * @param props.tooltip {String|React.ReactNode} Optional tooltip node/string.
+ * @param props.markerOptions {Object} The leaflet marker options.
+ * @param props.children {React.ReactNode} The React children.
+ * @returns {React.FunctionComponent} The map component.
+ */
 export const TMCMarker = ({
   position,
+  tooltip,
   markerOptions = {},
   children,
 }: IMarkerProps) => {
-  const icon = LeafletIcon({
-    iconUrl: `data:image/png;base64, ${markerIconImg}`,
-    iconSize: [38, 55]
-  });
-
   const opts = {
-    icon,
+    icon: DEFAULT_MARKER_ICON,
     ...markerOptions,
+    position,
   };
 
   return (
-    children
-      ? (
-        <Marker {...opts} position={position}>
-          <Popup>
-            {children}
-          </Popup>
-        </Marker>
-      )
-      : <Marker {...opts} position={position} />
-  )
+    <TMCLeafletBase Component={Marker} componentProps={opts} tooltip={tooltip}>
+      {children}
+    </TMCLeafletBase>
+  );
 };
 
 TMCMarker.propTypes = {
   position: PropTypes.arrayOf(PropTypes.number).isRequired,
+  tooltip: PropTypes.node,
   markerOptions: PropTypes.shape({
     icon: PropTypes.instanceOf(Icon),
     keyboard: PropTypes.bool,
@@ -83,6 +92,7 @@ TMCMarker.propTypes = {
 };
 
 TMCMarker.defaultProps = {
+  tooltip: undefined,
   markerOptions: {},
 };
 

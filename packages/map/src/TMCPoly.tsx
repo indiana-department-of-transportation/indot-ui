@@ -10,12 +10,15 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Popup, Polyline } from 'react-leaflet';
+import { Polyline } from 'react-leaflet';
+
+import TMCLeafletBase from './TMCLeafletBase';
 
 interface IPolyProps {
   path: [number, number][],
   color?: string,
   weight?: number,
+  tooltip?: React.ReactNode,
   children?: React.ReactNode,
 }
 
@@ -26,6 +29,7 @@ interface IPolyProps {
  * @param props.path {Array} The array of latlng pairs to define the geometry.
  * @param props.color {string} The stroke color for the line. Defaults to green.
  * @param props.weight {number} The stroke weight. Defaults to 5.
+ * @param props.tooltip {String|React.ReactNode} Optional tooltip node/string.
  * @param props.children {React.ReactNode} The React children.
  * @returns {React.FunctionComponent} The map component.
  */
@@ -33,31 +37,22 @@ export const TMCPoly = ({
   path,
   color = '#0F0',
   weight = 5,
+  tooltip,
   children,
 }: IPolyProps) => (
-    children
-      ? (
-        <Polyline
-          positions={path}
-          color={color}
-          weight={weight}
-        >
-          <Popup>
-            {children}
-          </Popup>
-        </Polyline>
-      ) : (
-        <Polyline
-          positions={path}
-          color={color}
-          weight={weight}
-        />
-      )
-  );
+  <TMCLeafletBase
+    Component={Polyline}
+    componentProps={{ path, color, weight }}
+    tooltip={tooltip}
+  >
+    {children}
+  </TMCLeafletBase>
+);
 
 TMCPoly.defaultProps = {
   color: '#0F0',
   weight: 5,
+  tooltip: undefined,
   children: undefined,
 };
 
@@ -65,6 +60,7 @@ TMCPoly.propTypes = {
   path: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.number)).isRequired,
   color: PropTypes.string,
   weight: PropTypes.number,
+  tooltip: PropTypes.node,
   children: PropTypes.node,
 };
 
