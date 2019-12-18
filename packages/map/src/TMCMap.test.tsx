@@ -13,7 +13,7 @@ import Adapter from 'enzyme-adapter-react-16';
 import Enzyme, { mount } from 'enzyme';
 import { Polyline, TileLayer, Popup } from 'react-leaflet';
 
-import { TMCMap, TMCPoly } from './TMCMap';
+import { TMCMap } from './TMCMap';
 
 Enzyme.configure({ adapter: new Adapter() });
 
