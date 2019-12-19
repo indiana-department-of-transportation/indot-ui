@@ -1,6 +1,6 @@
 {
   "name": "@indot/material-theme",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "description": "Material UI theme for INDOT TMC applications.",
   "main": "dist/theme.js",
   "scripts": {
