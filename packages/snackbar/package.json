@@ -46,14 +46,14 @@
     "typescript": "^3.6.3"
   },
   "peerDependencies": {
+    "@material-ui/core": "^4.5.0",
+    "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2"
   },
   "dependencies": {
-    "@material-ui/core": "^4.5.0",
     "@material-ui/icons": "^4.4.3",
-    "clsx": "^1.0.4",
-    "prop-types": "^15.7.2"
+    "clsx": "^1.0.4"
   },
   "gitHead": "897417daa823d53b0bb348115ebb4b9e612de626"
 }

@@ -20,6 +20,8 @@
   "author": "jarsmith@indot.in.gov",
   "license": "MIT",
   "peerDependencies": {
+    "@material-ui/core": "^4.5.0",
+    "prop-types": "^15.7.2",
     "react": "^16.10.2",
     "react-dom": "^16.10.2"
   },
@@ -42,10 +44,6 @@
   },
   "publishConfig": {
     "access": "public"
-  },
-  "dependencies": {
-    "@material-ui/core": "^4.5.0",
-    "prop-types": "^15.7.2"
   },
   "gitHead": "897417daa823d53b0bb348115ebb4b9e612de626"
 }
