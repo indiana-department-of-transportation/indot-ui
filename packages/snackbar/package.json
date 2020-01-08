@@ -1,6 +1,6 @@
 {
   "name": "@indot/snackbar",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "React Material-UI snackbar",
   "main": "dist/Snackbar",
   "scripts": {

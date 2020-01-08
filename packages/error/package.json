@@ -1,6 +1,6 @@
 {
   "name": "@indot/error",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "INDOT Error React Component",
   "main": "dist/TMCError.js",
   "scripts": {
@@ -21,9 +21,9 @@
   "author": "jarsmith@indot.in.gov",
   "license": "MIT",
   "peerDependencies": {
+    "prop-types": "^15.7.2",
     "react": "^16.10.2",
-    "react-dom": "^16.10.2",
-    "prop-types": "^15.7.2"
+    "react-dom": "^16.10.2"
   },
   "devDependencies": {
     "@types/enzyme": "^3.10.3",

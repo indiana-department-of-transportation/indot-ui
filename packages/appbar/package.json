@@ -1,6 +1,6 @@
 {
   "name": "@indot/appbar",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "description": "Appbar for INDOT TMC React applications",
   "main": "dist/Appbar.js",
   "scripts": {
@@ -21,9 +21,9 @@
   "author": "jarsmith@indot.in.gov",
   "license": "MIT",
   "peerDependencies": {
+    "@material-ui/core": "^4.5.0",
     "react": "^16.10.2",
-    "react-dom": "^16.10.2",
-    "@material-ui/core": "^4.5.0"
+    "react-dom": "^16.10.2"
   },
   "devDependencies": {
     "@types/enzyme": "^3.10.3",
@@ -44,8 +44,8 @@
     "typescript": "^3.6.3"
   },
   "dependencies": {
-    "@indot/account": "^0.0.10",
-    "@indot/material-theme": "^0.0.10",
+    "@indot/account": "^0.0.11",
+    "@indot/material-theme": "^0.0.11",
     "@jasmith79/ts-utils": "^0.1.0",
     "@material-ui/icons": "^4.4.3",
     "prop-types": "^15.7.2",
