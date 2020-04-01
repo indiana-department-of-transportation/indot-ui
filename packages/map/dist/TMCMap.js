@@ -33,11 +33,11 @@ export const TMCMap = ({
   tileURL = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
   initZoom = 11,
   children
-}) => React.createElement(Map, {
+}) => /*#__PURE__*/React.createElement(Map, {
   center: position,
   zoom: initZoom,
   style: MAP_STYLES
-}, React.createElement(TileLayer, {
+}, /*#__PURE__*/React.createElement(TileLayer, {
   attribution: OSM_ATTR,
   url: tileURL
 }), children);

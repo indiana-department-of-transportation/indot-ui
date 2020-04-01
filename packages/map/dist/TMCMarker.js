@@ -46,7 +46,7 @@ export const TMCMarker = ({
     position
   });
 
-  return React.createElement(TMCLeafletBase, {
+  return /*#__PURE__*/React.createElement(TMCLeafletBase, {
     Component: Marker,
     componentProps: opts,
     tooltip: tooltip

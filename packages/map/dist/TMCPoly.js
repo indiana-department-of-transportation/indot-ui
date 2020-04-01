@@ -29,7 +29,7 @@ export const TMCPoly = ({
   weight = 5,
   tooltip,
   children
-}) => React.createElement(TMCLeafletBase, {
+}) => /*#__PURE__*/React.createElement(TMCLeafletBase, {
   Component: Polyline,
   componentProps: {
     path,

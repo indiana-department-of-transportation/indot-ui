@@ -46,7 +46,7 @@
   "dependencies": {
     "@indot/account": "^0.0.11",
     "@indot/material-theme": "^0.0.11",
-    "@jasmith79/ts-utils": "^0.1.0",
+    "@jasmith79/ts-utils": "^0.3.1" ,
     "@material-ui/icons": "^4.4.3",
     "prop-types": "^15.7.2",
     "react-router-dom": "^5.1.2"

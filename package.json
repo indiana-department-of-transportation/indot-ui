@@ -21,7 +21,6 @@
     "link": "lerna link"
   },
   "dependencies": {
-    "@jasmith79/ts-utils": "^0.1.0",
     "prop-types": "^15.7.2"
   }
 }

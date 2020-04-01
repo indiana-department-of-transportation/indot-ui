@@ -28,9 +28,9 @@ export const TMCLeafletBase = ({
   tooltip,
   children
 }) => {
-  const tt = typeof tooltip === 'string' ? React.createElement(Tooltip, null, tooltip) : tooltip;
-  const popup = children && React.createElement(Popup, null, children);
-  return React.createElement(Component, componentProps, tt, popup);
+  const tt = typeof tooltip === 'string' ? /*#__PURE__*/React.createElement(Tooltip, null, tooltip) : tooltip;
+  const popup = children && /*#__PURE__*/React.createElement(Popup, null, children);
+  return /*#__PURE__*/React.createElement(Component, componentProps, tt, popup);
 };
 TMCLeafletBase.propTypes = {
   Component: PropTypes.func.isRequired,
