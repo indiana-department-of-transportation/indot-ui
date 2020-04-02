@@ -1,6 +1,6 @@
 {
   "name": "@indot/input",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "INDOT ValidatingInput Component",
   "main": "dist/input.js",
   "scripts": {
