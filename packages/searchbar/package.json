@@ -1,6 +1,6 @@
 {
   "name": "@indot/searchbar",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Searchbar for INDOT TMC React applications",
   "main": "dist/Searchbar.js",
   "scripts": {

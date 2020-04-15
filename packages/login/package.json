@@ -1,6 +1,6 @@
 {
   "name": "@indot/login",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "INDOT Login React Component",
   "main": "dist/Login.js",
   "scripts": {
