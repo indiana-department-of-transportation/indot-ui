@@ -1,6 +1,6 @@
 {
   "name": "@indot/login",
-  "version": "0.3.2",
+  "version": "0.3.3",
   "description": "INDOT Login React Component",
   "main": "dist/Login.js",
   "scripts": {
@@ -49,7 +49,7 @@
     "access": "public"
   },
   "dependencies": {
-    "@indot/input": "^0.3.2",
+    "@indot/input": "^0.3.3",
     "@indot/state-hooks": "^0.1.2",
     "@indot/usetmcuser": "0.0.2"
   },
