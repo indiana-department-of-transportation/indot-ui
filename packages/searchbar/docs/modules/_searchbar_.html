@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;Searchbar&quot; | @indot/searchbar - v0.3.0</title>
+	<title>&quot;Searchbar&quot; | @indot/searchbar - v0.3.2</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@indot/searchbar - v0.3.0</a>
+					<a href="../index.html" class="title">@indot/searchbar - v0.3.2</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -85,7 +85,7 @@
 					<div class="tsd-signature tsd-kind-icon">Searchbar<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ForwardRefExoticComponent</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ISearchbarProps</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">RefAttributes</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;React.forwardRef(({onSearch,onChange &#x3D; noop,placeholder &#x3D; &#x27;Search…&#x27;,// eslint-disable-next-line no-unused-vars}: ISearchbarProps, ref) &#x3D;&gt; {const classes &#x3D; useStyles();const [currentValue, setValue] &#x3D; useState(&#x27;&#x27;);const onKeyPress &#x3D; (evt: IKeyCode) &#x3D;&gt; {if (evt.keyCode &#x3D;&#x3D;&#x3D; 13 || (evt.key &amp;&amp; evt.key &#x3D;&#x3D;&#x3D; &#x27;enter&#x27;)) {onSearch(currentValue);}};const changeHandler &#x3D; (evt: IChange) &#x3D;&gt; {const val &#x3D; evt.target ? (evt.target as HTMLInputElement).value : null;setValue(val || &#x27;&#x27;);onChange(evt);};return (&lt;div className&#x3D;{classes.search}&gt;&lt;div className&#x3D;{classes.searchIcon}&gt;&lt;SearchIcon onClick&#x3D;{() &#x3D;&gt; onSearch(currentValue)} /&gt;&lt;/div&gt;&lt;InputBaseplaceholder&#x3D;{placeholder}onChange&#x3D;{changeHandler}onKeyDown&#x3D;{onKeyPress}value&#x3D;{currentValue}classes&#x3D;{{root: classes.inputRoot,input: classes.inputInput,}}/&gt;&lt;/div&gt;);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/indiana-department-of-transportation/indot-ui/blob/5abe337/packages/searchbar/src/Searchbar.tsx#L91">Searchbar.tsx:91</a></li>
+							<li>Defined in <a href="https://github.com/indiana-department-of-transportation/indot-ui/blob/d0cdb48/packages/searchbar/src/Searchbar.tsx#L91">Searchbar.tsx:91</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
