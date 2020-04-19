@@ -15,18 +15,17 @@ const defaultFormat = (value) => {
     }
     return stringed;
 };
-const extractEventValue = (evt) => {
-    return evt && evt.target
-        ? evt.target.value
-        : evt && evt.currentTarget
-            ? evt.currentTarget.value
-            : null;
-};
-const useValidatingInput = ({ value, setValue, parse = ts_utils_1.echo, format = defaultFormat, onError = ts_utils_1.identity, name = '', ...rest }) => {
+exports.useValidatingInput = ({ value, setValue, parse = ts_utils_1.echo, format = defaultFormat, onError = ts_utils_1.identity, name = '', }) => {
     const [localState, updateLocalState] = react_1.useState(format(value));
     const [errorState, updateErrorState] = react_1.useState();
-    const onBlur = (evt) => {
-        const value = extractEventValue(evt);
+    react_1.useEffect(() => {
+        const externalValue = format(value);
+        if (externalValue !== localState) {
+            updateLocalState(externalValue);
+        }
+    }, [value]);
+    const onBlur = react_1.useCallback((evt) => {
+        const value = react_utils_1.extractSyntheticEventValue(evt);
         try {
             const parsed = parse(value);
             const display = format(parsed);
@@ -38,31 +37,22 @@ const useValidatingInput = ({ value, setValue, parse = ts_utils_1.echo, format =
             updateErrorState(err);
             onError(err);
         }
-    };
-    const onChange = (evt) => {
-        const value = extractEventValue(evt);
-        try {
-            const parsed = parse(value);
-            const display = format(parsed);
-            updateLocalState(display);
-            setValue(parsed);
-            updateErrorState(undefined);
-        }
-        catch (err) {
-            onError(err);
-        }
-    };
+    }, []);
+    const onChange = react_1.useCallback((evt) => {
+        const value = react_utils_1.extractSyntheticEventValue(evt);
+        updateLocalState(value);
+    }, []);
     const formCtrlName = name || setValue.name;
     return {
         value: localState,
-        isError: errorState,
+        isError: Boolean(errorState),
         onBlur,
         onChange,
         name: formCtrlName,
     };
 };
 exports.ValidatingInput = (props) => {
-    const params = useValidatingInput(props);
+    const params = exports.useValidatingInput(props);
     const renderTarget = react_utils_1.useRenderProps(props);
     if (typeof renderTarget === 'function') {
         return renderTarget(params);
