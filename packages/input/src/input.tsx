@@ -1,21 +1,26 @@
-import React, { useState } from 'react';
+import {
+  useState,
+  useCallback,
+  useEffect,
+  SyntheticEvent
+} from 'react';
 
 import {
   identity,
   echo,
-  FormControlEvent
 } from '@jasmith79/ts-utils';
 
 import {
   useRenderProps,
   RenderProps,
+  extractSyntheticEventValue,
 } from '@jasmith79/react-utils';
 
 export type ValidatingInputProps<T> = {
   value: T,
-  setValue: (value: T | null) => void,
-  parse?: (input: string | null) => T | null,
-  format?: (value: T | null) => string,
+  setValue: (value: T) => void,
+  parse?: (input: string) => T,
+  format?: (value: T) => string,
   onError?: (err: Error) => void,
   name?: string,
 };
@@ -23,8 +28,8 @@ export type ValidatingInputProps<T> = {
 export type ValidatingInputParams = {
   value: string,
   isError?: boolean,
-  onBlur: (evt: FormControlEvent) => void,
-  onChange: (evt: FormControlEvent) => void,
+  onBlur: (evt: SyntheticEvent) => void,
+  onChange: (evt: SyntheticEvent) => void,
   name: string,
 }
 
@@ -44,27 +49,25 @@ const defaultFormat = (value: any) => {
   return stringed;
 };
 
-const extractEventValue = (evt: FormControlEvent) => {
-  return evt && evt.target
-    ? evt.target.value
-    : evt && evt.currentTarget
-      ? evt.currentTarget.value
-      : null;
-};
-
-const useValidatingInput = <T,>({
+export const useValidatingInput = <T,>({
   value,
   setValue,
   parse = echo,
   format = defaultFormat,
   onError = identity,
   name = '',
-  ...rest
 }: ValidatingInputProps<T>) => {
   const [localState, updateLocalState] = useState(format(value));
   const [errorState, updateErrorState] = useState();
-  const onBlur = (evt: FormControlEvent) => {
-    const value = extractEventValue(evt);
+  useEffect(() => {
+    const externalValue = format(value);
+    if (externalValue !== localState) {
+      updateLocalState(externalValue);
+    }
+  }, [value]);
+
+  const onBlur = useCallback((evt: SyntheticEvent) => {
+    const value = extractSyntheticEventValue(evt);
     try {
       const parsed = parse(value);
       const display = format(parsed);
@@ -75,25 +78,17 @@ const useValidatingInput = <T,>({
       updateErrorState(err);
       onError(err);
     }
-  };
+  }, []);
 
-  const onChange = (evt: FormControlEvent) => {
-    const value = extractEventValue(evt);
-    try {
-      const parsed = parse(value);
-      const display = format(parsed);
-      updateLocalState(display);
-      setValue(parsed);
-      updateErrorState(undefined);
-    } catch (err) {
-      onError(err);
-    }
-  };
+  const onChange = useCallback((evt: SyntheticEvent) => {
+    const value = extractSyntheticEventValue(evt);
+    updateLocalState(value);
+  }, []);
 
   const formCtrlName = name || setValue.name;
   return {
     value: localState,
-    isError: errorState,
+    isError: Boolean(errorState),
     onBlur,
     onChange,
     name: formCtrlName,
@@ -113,3 +108,4 @@ export const ValidatingInput = <T,>(
 };
 
 export default ValidatingInput;
+

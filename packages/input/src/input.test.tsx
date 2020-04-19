@@ -117,7 +117,7 @@ describe('ValidatingInput', () => {
         }</ValidatingInput>
       );
 
-      wrapper.find('input').at(0).simulate('change', { target: { value: 'pizza' } });
+      wrapper.find('input').at(0).simulate('blur', { target: { value: 'pizza' } });
       expect(setter).toHaveBeenCalledWith('pizza');
     });
   });
