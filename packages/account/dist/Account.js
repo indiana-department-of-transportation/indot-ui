@@ -53,7 +53,7 @@ exports.Account = ({ logoff, userName = '' }) => {
         : (react_1.default.createElement(react_1.default.Fragment, null,
             react_1.default.createElement(Tooltip_1.default, { title: userName },
                 react_1.default.createElement(AccountCircleOutlined_1.default, { className: classes.icon, "aria-haspopup": true, onClick: (evt) => setAnchor(evt.target) })),
-            react_1.default.createElement(Menu_1.default, { open: Boolean(anchor), id: "acct-menu", onClose: () => setAnchor(null), anchorEl: anchor },
+            react_1.default.createElement(Menu_1.default, { open: Boolean(anchor), id: "acct-menu", onClose: () => setAnchor(undefined), anchorEl: anchor },
                 react_1.default.createElement(MenuItem_1.default, { disabled: true }, userName),
                 react_1.default.createElement(MenuItem_1.default, { onClick: logout, className: "logoff" }, "Log Off")))));
 };

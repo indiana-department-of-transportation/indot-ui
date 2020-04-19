@@ -41,7 +41,7 @@ export const Account = ({
   userName?: string,
 }) => {
   const classes = useStyles();
-  const [anchor, setAnchor] = useState();
+  const [anchor, setAnchor] = useState<HTMLElement>();
   const [redirected, setRedirected] = useState(false);
   const logout = () => {
     logoff();
@@ -63,7 +63,7 @@ export const Account = ({
           <Menu
             open={Boolean(anchor)}
             id="acct-menu"
-            onClose={() => setAnchor(null)}
+            onClose={() => setAnchor(undefined)}
             anchorEl={anchor}
           >
             <MenuItem disabled>{userName}</MenuItem>
