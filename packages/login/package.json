@@ -21,8 +21,10 @@
   "author": "jarsmith@indot.in.gov",
   "license": "MIT",
   "peerDependencies": {
+    "prop-types": "^15.7.2",
     "react": "^16.13.1",
-    "react-dom": "^16.13.1"
+    "react-dom": "^16.13.1",
+    "react-router-dom": "^5.1.2"
   },
   "devDependencies": {
     "@jasmith79/global-this": "0.0.1",
@@ -35,7 +37,6 @@
     "@types/react-router-dom": "^5.1.0",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
-    "install-peers": "^1.0.3",
     "jest": "^24.9.0",
     "jsdom": "^15.1.1",
     "jsdom-global": "^3.0.2",
@@ -48,9 +49,9 @@
     "access": "public"
   },
   "dependencies": {
-    "formik": "^1.5.8",
-    "prop-types": "^15.7.2",
-    "react-router-dom": "^5.1.2"
+    "@indot/input": "^0.3.2",
+    "@indot/state-hooks": "^0.1.2",
+    "@indot/usetmcuser": "0.0.2"
   },
   "gitHead": "cdd47eb2af0640ee9492e363a483a5349fee943c"
 }

@@ -20,13 +20,16 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const prop_types_1 = __importDefault(require("prop-types"));
-const formik_1 = require("formik");
 const Grid_1 = __importDefault(require("@material-ui/core/Grid"));
 const TextField_1 = __importDefault(require("@material-ui/core/TextField"));
 const Button_1 = __importDefault(require("@material-ui/core/Button"));
-const defaultFormState = {
-    user_name: '',
-    user_pass: '',
+const input_1 = __importDefault(require("@indot/input"));
+const usetmcuser_1 = require("@indot/usetmcuser");
+const state_hooks_1 = require("@indot/state-hooks");
+const throwIfEmpty = (s) => {
+    if (!s)
+        throw new Error('Empty input!');
+    return s;
 };
 /**
  * @description Login form component.
@@ -34,35 +37,25 @@ const defaultFormState = {
  * @param {Function} props.update Update function for the user state.
  * @returns {React.FunctionComponent} The login form component.
  */
-exports.Login = ({ update, initialState, }) => {
-    const [userFormState, setUserFormState] = react_1.useState(initialState || defaultFormState);
-    /**
-     * @description State managing event handler for the login form.
-     * @param {string} name The property name to update in the state object.
-     * @returns {Function} Event handler, side-effective.
-     */
-    const updateFormState = (name) => (evt) => setUserFormState({
-        ...userFormState,
-        [name]: evt.target.value,
-    });
-    // We'll use the form state instead of values
-    const submitHandler = (_values, { setSubmitting, }) => {
-        setSubmitting(true);
-        const { user_name, user_pass } = userFormState;
-        update(user_name, user_pass);
-        setSubmitting(false);
-    };
-    return (react_1.default.createElement(formik_1.Formik, { initialValues: defaultFormState, onSubmit: submitHandler }, ({ isSubmitting }) => (react_1.default.createElement(formik_1.Form, null,
+exports.Login = ({ login, }) => {
+    const user = usetmcuser_1.useUser();
+    const [userName, setUserName] = state_hooks_1.useLocalState('crashmap/user', user.user_name);
+    const [userPass, setUserPass] = react_1.useState('');
+    const handleSubmit = react_1.useCallback((evt) => {
+        evt.preventDefault();
+        login(userName, userPass);
+    }, []);
+    return (react_1.default.createElement("form", { onSubmit: handleSubmit },
         react_1.default.createElement(Grid_1.default, { container: true, direction: "column", alignContent: "center", justify: "center", spacing: 1 },
             react_1.default.createElement(Grid_1.default, { item: true },
-                react_1.default.createElement(formik_1.Field, { component: TextField_1.default, name: "user_name", pattern: "^[a-zA-Z0-9]+@trafficwise\\.org$", label: "User Name", value: userFormState.user_name, onChange: updateFormState('user_name'), autoFocus: true })),
+                react_1.default.createElement(input_1.default, { value: userName, setValue: setUserName, parse: throwIfEmpty }, ({ onBlur, onChange, value, name, }) => (react_1.default.createElement(TextField_1.default, { onChange: onChange, onBlur: onBlur, value: value, name: name, required: true })))),
             react_1.default.createElement(Grid_1.default, { item: true },
-                react_1.default.createElement(formik_1.Field, { component: TextField_1.default, name: "user_pass", type: "password", label: "Password", value: userFormState.user_pass, onChange: updateFormState('user_pass') })),
+                react_1.default.createElement(input_1.default, { value: userPass, setValue: setUserPass, parse: throwIfEmpty }, ({ onBlur, onChange, value, name, }) => (react_1.default.createElement(TextField_1.default, { onChange: onChange, onBlur: onBlur, type: "password", value: value, name: name, required: true })))),
             react_1.default.createElement(Grid_1.default, { item: true },
-                react_1.default.createElement(Button_1.default, { variant: "contained", disabled: isSubmitting, color: "primary", style: { position: 'relative', top: '25px' }, type: "submit" }, "Submit")))))));
+                react_1.default.createElement(Button_1.default, { variant: "contained", color: "primary", style: { position: 'relative', top: '25px' }, type: "submit" }, "Submit")))));
 };
 exports.Login.propTypes = {
-    update: prop_types_1.default.func.isRequired,
+    login: prop_types_1.default.func.isRequired,
 };
 exports.default = exports.Login;
 //# sourceMappingURL=Login.js.map
