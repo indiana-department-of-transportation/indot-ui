@@ -17,7 +17,7 @@ import Adapter from 'enzyme-adapter-react-16';
 
 Enzyme.configure({ adapter: new Adapter() });
 
-import ValidatingInput, { IValidatingInputParams } from './input';
+import ValidatingInput, { ValidatingInputParams } from './input';
 
 const timeout = (n: number) => new Promise(res => setTimeout(res, n));
 
@@ -55,7 +55,7 @@ describe('ValidatingInput', () => {
       onBlur,
       onChange,
       name,
-    }: IValidatingInputParams) => <TextField
+    }: ValidatingInputParams) => <TextField
       value={value}
       onBlur={onBlur}
       onChange={onChange}
@@ -82,7 +82,7 @@ describe('ValidatingInput', () => {
       onBlur,
       onChange,
       name,
-    }: IValidatingInputParams) => <TextField
+    }: ValidatingInputParams) => <TextField
         value={value}
         onBlur={onBlur}
         onChange={onChange}
@@ -117,7 +117,7 @@ describe('ValidatingInput', () => {
         }</ValidatingInput>
       );
 
-      wrapper.find('input').at(0).simulate('change', { target: { value: 'pizza' } });
+      wrapper.find('input').at(0).simulate('blur', { target: { value: 'pizza' } });
       expect(setter).toHaveBeenCalledWith('pizza');
     });
   });
@@ -174,7 +174,6 @@ describe('ValidatingInput', () => {
             onChange,
             name,
           }) => {
-            console.log("VALUE IS " + value);
             return <TextField value={value} onBlur={onBlur} onChange={onChange} error={isError} name={name} />;
           }
         }</ValidatingInput>
@@ -212,7 +211,6 @@ describe('ValidatingInput', () => {
               onChange,
               name,
             }) => {
-              console.log("VALUE IS " + value);
               return <TextField value={value} onBlur={onBlur} onChange={onChange} error={isError} name={name} />;
             }
           }</ValidatingInput>

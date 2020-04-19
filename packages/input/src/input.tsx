@@ -1,33 +1,36 @@
-import React, { useState } from 'react';
+import {
+  useState,
+  useCallback,
+  useEffect,
+  SyntheticEvent
+} from 'react';
 
 import {
   identity,
   echo,
-  FormControlEvent
 } from '@jasmith79/ts-utils';
 
-export interface IValidatingInputParams {
-  value: string,
-  isError?: boolean, 
-  onBlur: (evt: FormControlEvent) => void,
-  onChange: (evt: FormControlEvent) => void,
-  name: string,
-}
+import {
+  useRenderProps,
+  RenderProps,
+  extractSyntheticEventValue,
+} from '@jasmith79/react-utils';
 
-export interface IInputRenderFn {
-  (props: IValidatingInputParams): React.ReactElement
-}
-
-export interface IValidatingInputProps<T> {
+export type ValidatingInputProps<T> = {
   value: T,
-  setValue: (value: T | null) => void,
-  children?: React.ReactChild | IInputRenderFn,
-  render?: (props: IValidatingInputParams) => React.ReactElement,
-  component?: React.ComponentType<IValidatingInputParams>,
-  name?: string,
-  parse?: (input: string | null) => T | null,
-  format?: (value: T | null) => string,
+  setValue: (value: T) => void,
+  parse?: (input: string) => T,
+  format?: (value: T) => string,
   onError?: (err: Error) => void,
+  name?: string,
+};
+
+export type ValidatingInputParams = {
+  value: string,
+  isError?: boolean,
+  onBlur: (evt: SyntheticEvent) => void,
+  onChange: (evt: SyntheticEvent) => void,
+  name: string,
 }
 
 // This will catch any non-primitive.
@@ -39,37 +42,32 @@ const defaultFormat = (value: any) => {
   }
 
   const stringed = '' + value;
-
   if (stringed.match(GENERIC_OBJ_REGEX)) {
     throw new Error('Object cannot be formatted for input value.');
   }
-  console.log("STRINGED " + stringed);
+
   return stringed;
 };
 
-const extractEventValue = (evt: FormControlEvent) => {
-  return evt && evt.target
-    ? evt.target.value
-    : evt && evt.currentTarget
-      ? evt.currentTarget.value
-      : null;
-};
-
-export const ValidatingInput = <T,>({
-  children,
-  render,
-  component,
-  name,
+export const useValidatingInput = <T,>({
+  value,
+  setValue,
   parse = echo,
   format = defaultFormat,
   onError = identity,
-  value,
-  setValue,
-}: IValidatingInputProps<T>): React.ReactElement | null => {
+  name = '',
+}: ValidatingInputProps<T>) => {
   const [localState, updateLocalState] = useState(format(value));
   const [errorState, updateErrorState] = useState();
-  const onBlur = (evt: FormControlEvent) => {
-    const value = extractEventValue(evt);
+  useEffect(() => {
+    const externalValue = format(value);
+    if (externalValue !== localState) {
+      updateLocalState(externalValue);
+    }
+  }, [value]);
+
+  const onBlur = useCallback((evt: SyntheticEvent) => {
+    const value = extractSyntheticEventValue(evt);
     try {
       const parsed = parse(value);
       const display = format(parsed);
@@ -80,30 +78,24 @@ export const ValidatingInput = <T,>({
       updateErrorState(err);
       onError(err);
     }
-  };
+  }, []);
 
-  const onChange = (evt: FormControlEvent) => {
-    const value = extractEventValue(evt);
-    try {
-      const parsed = parse(value);
-      const display = format(parsed);
-      updateLocalState(display);
-      setValue(parsed);
-      updateErrorState(undefined);
-    } catch (err) {
-      onError(err);
-    }
-  };
+  const onChange = useCallback((evt: SyntheticEvent) => {
+    const value = extractSyntheticEventValue(evt);
+    updateLocalState(value);
+  }, []);
 
   const formCtrlName = name || setValue.name;
-  const params = {
+  return {
     value: localState,
-    isError: errorState,
+    isError: Boolean(errorState),
     onBlur,
     onChange,
     name: formCtrlName,
   };
+};
 
+<<<<<<< HEAD
   const renderTarget = component
     ? () => { const Component = component; return <Component {...params} />; }
     : render
@@ -112,6 +104,13 @@ export const ValidatingInput = <T,>({
         ? children
         : null;
 
+=======
+export const ValidatingInput = <T,>(
+  props: ValidatingInputProps<T> & RenderProps<ValidatingInputParams>,
+) => {
+  const params = useValidatingInput(props);
+  const renderTarget = useRenderProps(props);
+>>>>>>> 7757ad33bd071f530523dcfcb6854e96179b7c3e
   if (typeof renderTarget === 'function') {
     return renderTarget(params);
   } else {
@@ -120,3 +119,4 @@ export const ValidatingInput = <T,>({
 };
 
 export default ValidatingInput;
+
