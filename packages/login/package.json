@@ -1,6 +1,6 @@
 {
   "name": "@indot/login",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "INDOT Login React Component",
   "main": "dist/Login.js",
   "scripts": {
@@ -21,8 +21,8 @@
   "author": "jarsmith@indot.in.gov",
   "license": "MIT",
   "peerDependencies": {
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
     "@jasmith79/global-this": "0.0.1",

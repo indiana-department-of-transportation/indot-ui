@@ -1,6 +1,6 @@
 {
   "name": "@indot/snackbar",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "React Material-UI snackbar",
   "main": "dist/Snackbar",
   "scripts": {
@@ -46,10 +46,10 @@
     "typescript": "^3.6.3"
   },
   "peerDependencies": {
-    "@material-ui/core": "^4.5.0",
+    "@material-ui/core": "^4.9.8",
     "prop-types": "^15.7.2",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "dependencies": {
     "@material-ui/icons": "^4.4.3",

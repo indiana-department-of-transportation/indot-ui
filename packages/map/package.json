@@ -1,6 +1,6 @@
 {
   "name": "@indot/tmcmap",
-  "version": "0.2.1",
+  "version": "0.3.0",
   "description": "INDOT leaflat Map components",
   "main": "dist/index.js",
   "scripts": {
@@ -28,8 +28,8 @@
   },
   "peerDependencies": {
     "prop-types": "^15.7.2",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.4",
@@ -55,8 +55,8 @@
     "jest": "^24.9.0",
     "jsdom": "^15.1.1",
     "jsdom-global": "^3.0.2",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "source-map-loader": "^0.2.4",
     "style-loader": "^1.0.0",
     "ts-jest": "^24.1.0",
