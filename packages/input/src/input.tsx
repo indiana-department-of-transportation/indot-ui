@@ -112,23 +112,11 @@ export const ValidatingInput = <T,>({
         ? children
         : null;
 
-  // const Component = component;
-  // const renderTarget = render || Component || children;
-
   if (typeof renderTarget === 'function') {
     return renderTarget(params);
   } else {
     throw new Error('No renderable for Validating input.');
   }
 };
-
-const Test = () => (
-  <ValidatingInput
-    value={3}
-    setValue={(value: number | null) => console.log(`Called ${value}`)}
->{
-  (_props: IValidatingInputParams) => <input />
-}</ValidatingInput>
-);
 
 export default ValidatingInput;
