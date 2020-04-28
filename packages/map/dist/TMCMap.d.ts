@@ -14,6 +14,8 @@ interface IMapProps {
     tileURL?: string;
     initZoom?: number;
     children?: React.ReactNode;
+    className?: string;
+    isFullScreen?: boolean;
 }
 /**
  * @description The TMC leaflet map component.
@@ -26,18 +28,22 @@ interface IMapProps {
  * @returns {React.FunctionComponent} The map component.
  */
 export declare const TMCMap: {
-    ({ position, tileURL, initZoom, children, }: IMapProps): JSX.Element;
+    ({ position, tileURL, initZoom, className, isFullScreen, children, }: IMapProps): JSX.Element;
     defaultProps: {
         position: [number, number];
         tileURL: string;
         initZoom: number;
         children: undefined;
+        className: string;
+        isFullScreen: boolean;
     };
     propTypes: {
         position: PropTypes.Requireable<(number | null | undefined)[]>;
         tileURL: PropTypes.Requireable<string>;
         initZoom: PropTypes.Requireable<number>;
         children: PropTypes.Requireable<PropTypes.ReactNodeLike>;
+        className: PropTypes.Requireable<string>;
+        isFullScreen: PropTypes.Requireable<boolean>;
     };
 };
 export default TMCMap;
