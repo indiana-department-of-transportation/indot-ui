@@ -42,7 +42,7 @@ export const TMCPoly = ({
 }: IPolyProps) => (
   <TMCLeafletBase
     Component={Polyline}
-    componentProps={{ path, color, weight }}
+    componentProps={{ positions: path, color, weight }}
     tooltip={tooltip}
   >
     {children}

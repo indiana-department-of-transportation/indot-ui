@@ -32,7 +32,7 @@ export const TMCPoly = ({
 }) => /*#__PURE__*/React.createElement(TMCLeafletBase, {
   Component: Polyline,
   componentProps: {
-    path,
+    positions: path,
     color,
     weight
   },
