@@ -10,6 +10,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Map, Marker } from 'react-leaflet';
 /**
  * @description The TMC leaflet base component.
  *
@@ -28,7 +29,7 @@ export declare const TMCLeafletBase: {
         children?: React.ReactNode;
     }): JSX.Element;
     propTypes: {
-        Component: PropTypes.Validator<(...args: any[]) => any>;
+        Component: PropTypes.Validator<typeof Map | typeof Marker>;
         componentProps: PropTypes.Requireable<object>;
         tooltip: PropTypes.Requireable<any>;
         children: PropTypes.Requireable<PropTypes.ReactNodeLike>;
