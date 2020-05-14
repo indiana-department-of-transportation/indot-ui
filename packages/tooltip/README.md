@@ -1,3 +1,3 @@
-# NColumnGrid
+# Tooltip
 
-React component that arranges items in a 1, 2, or 3 column responsive grid.
+React component that wraps the Material-UI Tooltip for use in TMC applications.
