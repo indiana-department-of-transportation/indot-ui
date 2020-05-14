@@ -23,6 +23,7 @@
   "author": "jarsmith@indot.in.gov",
   "license": "MIT",
   "dependencies": {
+    "@jasmith79/ts-utils": "^0.7.1",
     "clsx": "^1.1.0",
     "leaflet": "^1.6.0",
     "react-leaflet": "^2.4.0"
