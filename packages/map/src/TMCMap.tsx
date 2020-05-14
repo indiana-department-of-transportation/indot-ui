@@ -8,12 +8,14 @@
  * @copyright INDOT, 2019
  */
 
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
-import { Map, TileLayer } from 'react-leaflet';
+import { Map, TileLayer, LeafletEvents } from 'react-leaflet';
 
 import { makeStyles } from '@material-ui/styles';
+
+import { emptyFn } from '@jasmith79/ts-utils';
 
 interface IMapProps {
   position?: [number, number],
@@ -22,6 +24,8 @@ interface IMapProps {
   children?: React.ReactNode,
   className?: string,
   isFullScreen?: boolean,
+  onMoveEnd?: (evt: LeafletEvents) => void,
+  onZoomStart?: (evt: LeafletEvents) => void,
 }
 
 const OSM_ATTR = `&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors`;
@@ -34,9 +38,10 @@ const useMapStyles = makeStyles({
   },
   fullscreen: {
     height: "calc(100vh - 64px)",
-    width: '100%',
+    width: '100vw',
     position: 'absolute',
-    top: '64px'
+    top: '64px',
+    overflow: 'hidden',
   },
 });
 
@@ -50,17 +55,31 @@ const useMapStyles = makeStyles({
  * @param props.children {React.ReactNode} The React children.
  * @returns {React.FunctionComponent} The map component.
  */
-export const TMCMap = ({
-  position = DEFAULT_CENTER,
-  tileURL = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-  initZoom = 11,
-  className = '',
-  isFullScreen = false,
-  children,
-}: IMapProps) => {
+export const TMCMap = (props: IMapProps) => {
+  const {
+    position = DEFAULT_CENTER,
+    tileURL = 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
+    initZoom = 11,
+    className = '',
+    isFullScreen = false,
+    onMoveEnd = emptyFn,
+    onZoomStart = emptyFn,
+    children,
+  } = props;
   const classes = useMapStyles();
+  const map = useRef<any>();
+
+  useEffect(() => {
+    // This works around a bug where depending on how the height of the
+    // map container is set the tiles don't use the full space to render.
+    window.dispatchEvent(new Event('resize'));
+  });
+
   return (
     <Map
+      ref={map}
+      onMoveEnd={onMoveEnd}
+      onZoomStart={onZoomStart}
       center={position}
       zoom={initZoom}
       className={clsx(isFullScreen ? classes.fullscreen : classes.defaultMap, className)}
