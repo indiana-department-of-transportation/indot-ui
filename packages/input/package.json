@@ -48,7 +48,7 @@
   },
   "gitHead": "cdd47eb2af0640ee9492e363a483a5349fee943c",
   "dependencies": {
-    "@jasmith79/react-utils": "0.0.3",
-    "@jasmith79/ts-utils": "^0.7.1"
+    "@jasmith79/react-utils": "0.1.0",
+    "@jasmith79/ts-utils": "^0.8.0"
   }
 }
