@@ -72,6 +72,7 @@ export const Login = ({
                   value={value}
                   name={name}
                   required
+                  label="Name"
                 />
               )}
           </ValidatingInput>
@@ -95,6 +96,7 @@ export const Login = ({
                   value={value}
                   name={name}
                   required
+                  label="Password"
                 />
               )}
           </ValidatingInput>
