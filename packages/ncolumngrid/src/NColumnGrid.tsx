@@ -23,8 +23,9 @@ const useStyles = makeStyles(() => ({
 type onetwothree = 1 | 2 | 3;
 
 type NColumnGridProps = {
-  items: Array<ReactNode>,
+  items?: Array<ReactNode>,
   columns?: onetwothree,
+  children?: React.ReactNode,
 }
 
 /**
@@ -36,8 +37,17 @@ type NColumnGridProps = {
  * @param {number} props.columns The number of columns for the layout.
  * @returns {React.Component} The layout component.
  */
-export const NColumnGrid = ({ items, columns = 3 }: NColumnGridProps) => {
+export const NColumnGrid = ({ children, items = [], columns = 3 }: NColumnGridProps) => {
   const classes = useStyles();
+  const toRender = children
+    ? React.Children.map(children, (child, i) => {
+      const index = (child as any)?.id ? (child as any).id : i;
+      return <Grid item xs={12} lg={(12 / columns) as onetwothree} key={index}>{child}</Grid>
+    }) : items.map((Item, i) => {
+      const index = (Item as any)?.id ? (Item as any).id : i;
+      return <Grid item xs={12} lg={(12 / columns) as onetwothree} key={index}>{Item}</Grid>;
+    });
+
   return (
     <Grid
       container
@@ -46,23 +56,18 @@ export const NColumnGrid = ({ items, columns = 3 }: NColumnGridProps) => {
       spacing={1}
       className={classes.root}
     >
-      {
-        // No good way to do this.
-        // eslint-disable-next-line react/no-array-index-key
-        items.map((Item, i) => (
-          <Grid item xs={12} lg={(12 / columns) as onetwothree} key={i}>{Item}</Grid>
-        ))
-      }
+      {toRender}
     </Grid>
   );
 };
 
 NColumnGrid.defaultProps = {
+  items: undefined,
   columns: 3,
 };
 
 NColumnGrid.propTypes = {
-  items: PropTypes.arrayOf(PropTypes.element).isRequired,
+  items: PropTypes.arrayOf(PropTypes.element),
   columns: PropTypes.oneOf([1, 2, 3]),
 };
 
