@@ -18,6 +18,8 @@ import { makeStyles } from '@material-ui/core/styles';
 
 import AccountCirleOutlined from '@material-ui/icons/AccountCircleOutlined';
 
+import { useUser } from '@indot/usetmcuser';
+
 const useStyles = makeStyles(() => ({
   icon: {
     position: 'relative',
@@ -35,13 +37,13 @@ const useStyles = makeStyles(() => ({
  */
 export const Account = ({
   logoff,
-  userName = ''
 }: {
   logoff: () => void,
-  userName?: string,
 }) => {
+  const user = useUser();
+  const userName = user?.user_name || '';
   const classes = useStyles();
-  const [anchor, setAnchor] = useState();
+  const [anchor, setAnchor] = useState<HTMLElement>();
   const [redirected, setRedirected] = useState(false);
   const logout = () => {
     logoff();
@@ -57,13 +59,13 @@ export const Account = ({
             <AccountCirleOutlined
               className={classes.icon}
               aria-haspopup
-              onClick={(evt: any) => setAnchor(evt.target)}
+              onClick={(evt: React.SyntheticEvent) => setAnchor(evt.target as HTMLElement)}
             />
           </Tooltip>
           <Menu
             open={Boolean(anchor)}
             id="acct-menu"
-            onClose={() => setAnchor(null)}
+            onClose={() => setAnchor(undefined)}
             anchorEl={anchor}
           >
             <MenuItem disabled>{userName}</MenuItem>

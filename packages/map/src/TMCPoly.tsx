@@ -40,14 +40,14 @@ export const TMCPoly = ({
   tooltip,
   children,
 }: IPolyProps) => (
-  <TMCLeafletBase
-    Component={Polyline}
-    componentProps={{ path, color, weight }}
-    tooltip={tooltip}
-  >
-    {children}
-  </TMCLeafletBase>
-);
+    <TMCLeafletBase
+      Component={Polyline}
+      componentProps={{ positions: path, color, weight }}
+      tooltip={tooltip}
+    >
+      {children}
+    </TMCLeafletBase>
+  );
 
 TMCPoly.defaultProps = {
   color: '#0F0',

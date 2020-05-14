@@ -1,6 +1,6 @@
 {
   "name": "@indot/ncolumngrid",
-  "version": "0.2.1",
+  "version": "0.3.3",
   "description": "Creates a 1, 2, or 3 column grid layout",
   "main": "dist/NColumnGrid.js",
   "scripts": {
@@ -26,10 +26,10 @@
   "author": "jasmith79",
   "license": "MIT",
   "peerDependencies": {
-    "@material-ui/core": "^4.5.0",
+    "@material-ui/core": "^4.9.8",
     "prop-types": "^15.7.2",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
     "@types/enzyme": "^3.10.3",

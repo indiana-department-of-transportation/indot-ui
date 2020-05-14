@@ -11,7 +11,13 @@
 
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Popup, Tooltip } from 'react-leaflet';
+import {
+  Popup,
+  Tooltip,
+  Polyline,
+  Map,
+  Marker,
+} from 'react-leaflet';
 
 /**
  * @description The TMC leaflet base component.
@@ -48,7 +54,7 @@ export const TMCLeafletBase = <P extends {}>({
 };
 
 TMCLeafletBase.propTypes = {
-  Component: PropTypes.func.isRequired,
+  Component: PropTypes.oneOf([Polyline, Marker, Map]).isRequired,
   componentProps: PropTypes.object,
   tooltip: PropTypes.any,
   children: PropTypes.node,

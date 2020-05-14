@@ -22,8 +22,7 @@ Enzyme.configure({ adapter: new Adapter() });
 describe('Login', () => {
   it('should render without crashing', () => {
     mount(<Login
-      update={() => { }}
-      initialState={{ user_name: 'bob', user_pass: '' }} 
+      login={(x: string, y: string) => {}}
     />);
     expect(true).toBe(true);
   });
@@ -33,8 +32,7 @@ describe('Login', () => {
     const fetch = jest.fn();
     globalThis.fetch = fetch;
     const wrapper = mount(<Login
-      update={updateFn}
-      initialState={{ user_name: 'bob', user_pass: 'foo' }}
+      login={updateFn}
     />);
 
     wrapper.find('button').simulate('click');

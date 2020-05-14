@@ -1,6 +1,6 @@
 {
   "name": "@indot/tmcmap",
-  "version": "0.2.1",
+  "version": "0.3.3",
   "description": "INDOT leaflat Map components",
   "main": "dist/index.js",
   "scripts": {
@@ -23,13 +23,16 @@
   "author": "jarsmith@indot.in.gov",
   "license": "MIT",
   "dependencies": {
+    "@jasmith79/ts-utils": "^0.7.1",
+    "clsx": "^1.1.0",
     "leaflet": "^1.6.0",
     "react-leaflet": "^2.4.0"
   },
   "peerDependencies": {
+    "@material-ui/styles": "^4.9.10",
     "prop-types": "^15.7.2",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
     "@babel/cli": "^7.7.4",
@@ -40,6 +43,7 @@
     "@babel/preset-env": "^7.7.4",
     "@babel/preset-react": "^7.7.4",
     "@babel/preset-typescript": "^7.7.4",
+    "@material-ui/styles": "^4.9.10",
     "@types/enzyme": "^3.10.3",
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.18",
@@ -55,8 +59,8 @@
     "jest": "^24.9.0",
     "jsdom": "^15.1.1",
     "jsdom-global": "^3.0.2",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
     "source-map-loader": "^0.2.4",
     "style-loader": "^1.0.0",
     "ts-jest": "^24.1.0",

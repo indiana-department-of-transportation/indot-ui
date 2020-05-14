@@ -8,10 +8,6 @@
  */
 /// <reference types="react" />
 import PropTypes from 'prop-types';
-interface ILoginFormState {
-    user_name: string;
-    user_pass: string;
-}
 /**
  * @description Login form component.
  * @param {Object} [props] The destructured props object.
@@ -19,12 +15,11 @@ interface ILoginFormState {
  * @returns {React.FunctionComponent} The login form component.
  */
 export declare const Login: {
-    ({ update, initialState, }: {
-        update: (userName: string, userPass: string) => void;
-        initialState?: ILoginFormState | undefined;
+    ({ login, }: {
+        login: (userName: string, userPass: string) => void;
     }): JSX.Element;
     propTypes: {
-        update: PropTypes.Validator<(...args: any[]) => any>;
+        login: PropTypes.Validator<(...args: any[]) => any>;
     };
 };
 export default Login;

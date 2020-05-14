@@ -1,6 +1,6 @@
 {
   "name": "@indot/searchbar",
-  "version": "0.2.1",
+  "version": "0.3.3",
   "description": "Searchbar for INDOT TMC React applications",
   "main": "dist/Searchbar.js",
   "scripts": {
@@ -22,11 +22,11 @@
   "author": "jarsmith@indot.in.gov",
   "license": "MIT",
   "peerDependencies": {
-    "@material-ui/core": "^4.5.0",
+    "@material-ui/core": "^4.9.8",
     "@material-ui/icons": "^4.4.3",
     "prop-types": "^15.7.2",
-    "react": "^16.10.2",
-    "react-dom": "^16.10.2"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1"
   },
   "devDependencies": {
     "@types/enzyme": "^3.10.3",
