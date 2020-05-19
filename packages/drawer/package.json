@@ -2,7 +2,7 @@
   "name": "@indot/drawer",
   "version": "0.3.3",
   "description": "Responsive side drawer",
-  "main": "dist/index.js",
+  "main": "dist/drawer.js",
   "scripts": {
     "test": "jest",
     "type-check": "tsc --noEmit",
