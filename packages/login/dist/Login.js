@@ -37,7 +37,7 @@ const throwIfEmpty = (s) => {
  * @param {Function} props.update Update function for the user state.
  * @returns {React.FunctionComponent} The login form component.
  */
-exports.Login = ({ login, }) => {
+exports.Login = ({ login, className = '', }) => {
     const user = usetmcuser_1.useUser();
     const [userName, setUserName] = state_hooks_1.useLocalState('crashmap/user', user.user_name);
     const [userPass, setUserPass] = react_1.useState('');
@@ -45,12 +45,12 @@ exports.Login = ({ login, }) => {
         evt.preventDefault();
         login(userName, userPass);
     }, []);
-    return (react_1.default.createElement("form", { onSubmit: handleSubmit },
+    return (react_1.default.createElement("form", { onSubmit: handleSubmit, className: className },
         react_1.default.createElement(Grid_1.default, { container: true, direction: "column", alignContent: "center", justify: "center", spacing: 1 },
             react_1.default.createElement(Grid_1.default, { item: true },
-                react_1.default.createElement(input_1.default, { value: userName, setValue: setUserName, parse: throwIfEmpty }, ({ onBlur, onChange, value, name, }) => (react_1.default.createElement(TextField_1.default, { onChange: onChange, onBlur: onBlur, value: value, name: name, required: true })))),
+                react_1.default.createElement(input_1.default, { value: userName, setValue: setUserName, parse: throwIfEmpty }, ({ onBlur, onChange, value, name, }) => (react_1.default.createElement(TextField_1.default, { autoFocus: true, onChange: onChange, onBlur: onBlur, value: value, name: name, required: true, label: "Name" })))),
             react_1.default.createElement(Grid_1.default, { item: true },
-                react_1.default.createElement(input_1.default, { value: userPass, setValue: setUserPass, parse: throwIfEmpty }, ({ onBlur, onChange, value, name, }) => (react_1.default.createElement(TextField_1.default, { onChange: onChange, onBlur: onBlur, type: "password", value: value, name: name, required: true })))),
+                react_1.default.createElement(input_1.default, { value: userPass, setValue: setUserPass, parse: throwIfEmpty }, ({ onBlur, onChange, value, name, }) => (react_1.default.createElement(TextField_1.default, { onChange: onChange, onBlur: onBlur, type: "password", value: value, name: name, required: true, label: "Password" })))),
             react_1.default.createElement(Grid_1.default, { item: true },
                 react_1.default.createElement(Button_1.default, { variant: "contained", color: "primary", style: { position: 'relative', top: '25px' }, type: "submit" }, "Submit")))));
 };

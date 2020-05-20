@@ -7,12 +7,15 @@
  * @license MIT
  * @copyright INDOT, 2019
  */
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
+export declare const useNColumnStyles: (props?: any) => Record<"root", string>;
 declare type onetwothree = 1 | 2 | 3;
 declare type NColumnGridProps = {
-    items: Array<ReactNode>;
+    items?: Array<ReactNode>;
     columns?: onetwothree;
+    children?: React.ReactNode;
+    className?: string;
 };
 /**
  * @description Lays the passed-in array of components out in a n-column
@@ -24,12 +27,13 @@ declare type NColumnGridProps = {
  * @returns {React.Component} The layout component.
  */
 export declare const NColumnGrid: {
-    ({ items, columns }: NColumnGridProps): JSX.Element;
+    ({ children, items, columns, className, }: NColumnGridProps): JSX.Element;
     defaultProps: {
+        items: undefined;
         columns: number;
     };
     propTypes: {
-        items: PropTypes.Validator<(PropTypes.ReactElementLike | null | undefined)[]>;
+        items: PropTypes.Requireable<(PropTypes.ReactElementLike | null | undefined)[]>;
         columns: PropTypes.Requireable<number>;
     };
 };

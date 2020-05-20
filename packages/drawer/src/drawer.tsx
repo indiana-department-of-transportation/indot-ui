@@ -1,3 +1,13 @@
+/**
+ * drawer.tsx
+ *
+ * @description Responsive side drawer.
+ *
+ * @author jarsmith@indot.in.gov
+ * @license MIT
+ * @copyright INDOT, 2020
+ */
+
 import React from 'react';
 import PropTypes from 'prop-types';
 import clsx from 'clsx';
@@ -16,7 +26,13 @@ export type ResponsiveDrawerProps = {
   children: React.ReactNode,
 }
 
-const useStyles = (width: number) => (makeStyles((theme) => {
+/**
+ * @description Style hook for ResponsiveDrawer component.
+ * 
+ * @param width The drawer width.
+ * @returns React Hook for the ResponsiveDrawer styles.
+ */
+export const useResponsiveDrawerStyles = (width: number) => (makeStyles((theme) => {
   const drawerWidth = `${width}px`;
   return ({
     drawer: {
@@ -40,14 +56,25 @@ const useStyles = (width: number) => (makeStyles((theme) => {
   });
 })());
 
-export function ResponsiveDrawer({
+/**
+ * @description A responsive side drawer component.
+ * 
+ * @param [props] The destructured React props.
+ * @param props.open Whether or not the drawer is open.
+ * @param props.setOpen Sets the open state of the drawer.
+ * @param props.width Width of the drawer, in pixels. Defaults to 320.
+ * @param props.className CSS classes for the underlying drawer.
+ * @param props.children React children.
+ * @returns The ResponsiveDrawer component.
+ */
+export const ResponsiveDrawer: React.FunctionComponent<ResponsiveDrawerProps> = ({
   open,
   setOpen,
-  width = 350,
+  width = 320,
   className = '',
   children,
-}: ResponsiveDrawerProps) {
-  const classes = useStyles(width);
+}: ResponsiveDrawerProps) => {
+  const classes = useResponsiveDrawerStyles(width);
   const close = (_evt: React.SyntheticEvent) => setOpen(false);
   return (
     <>
@@ -84,20 +111,36 @@ export function ResponsiveDrawer({
   );
 };
 
+ResponsiveDrawer.propTypes = {
+  open: PropTypes.bool.isRequired,
+  setOpen: PropTypes.func.isRequired,
+  width: PropTypes.number,
+  className: PropTypes.string,
+  children: PropTypes.node.isRequired,
+};
+
+/**
+ * @description Custom React Hook for using a responsive side drawer.
+ * 
+ * @param [params] The destructured parameters.
+ * @param params.width Width of the drawer, in pixels. Defaults to 320.
+ * @returns Drawer component, MenuButton component, Main component, and a
+ * state hook for using/setting the open state of the drawer. 
+ */
 export const useResponsiveDrawer = ({
-  width = 350,
+  width = 320,
 }: {
   width?: number,
 } = {}) => {
-  const classes = useStyles(width);
+  const classes = useResponsiveDrawerStyles(width);
   const [open, setOpen] = React.useState(false);
   const Drawer = React.useMemo(() => {
-    return ({
+    const Drawer: React.FunctionComponent<{
+      className?: string,
+      children: React.ReactNode,
+    }>  = ({
       children,
       className = '',
-    }: {
-      children: React.ReactNode,
-      className?: string,
     }) => (
       <ResponsiveDrawer
         open={open}
@@ -108,10 +151,17 @@ export const useResponsiveDrawer = ({
         {children}
       </ResponsiveDrawer>
     );
+
+    Drawer.propTypes = {
+      children: PropTypes.node.isRequired,
+      className: PropTypes.string,
+    };
+
+    return Drawer;
   }, [open, setOpen, width]);
 
   const MenuButton = React.useMemo(() => {
-    return ({
+    const MenuButton: React.FunctionComponent<{ className?: string }> = ({
       className = ''
     }) => (
       <IconButton
@@ -124,10 +174,19 @@ export const useResponsiveDrawer = ({
         <MenuIcon />
       </IconButton>
     );
+
+    MenuButton.propTypes = {
+      className: PropTypes.string,
+    };
+
+    return MenuButton;
   }, [classes.menuButton, setOpen]);
 
   const Main = React.useMemo(() => {
-    return ({
+    const Main: React.FunctionComponent<{
+      className?: string,
+      children: React.ReactNode,
+    }> = ({
       children,
       className = '',
     }: {
@@ -140,6 +199,13 @@ export const useResponsiveDrawer = ({
         </main>
       );
     };
+
+    Main.propTypes = {
+      children: PropTypes.node.isRequired,
+      className: PropTypes.string,
+    };
+
+    return Main;
   }, [classes.mainContainer]);
 
   const useResponsiveDrawerState = React.useMemo(() => {

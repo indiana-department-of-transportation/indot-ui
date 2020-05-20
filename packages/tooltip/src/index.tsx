@@ -12,6 +12,7 @@ import React, {
   HTMLAttributes,
   ReactNode,
 } from 'react';
+import PropTypes from 'prop-types';
 import clsx from 'clsx';
 
 import MUITooltip, { TooltipProps } from '@material-ui/core/Tooltip';
@@ -23,7 +24,7 @@ interface TooltipTitleProps<T> extends HTMLAttributes<T> {
   content: ReactNode,
 }
 
-const useTooltipStyles = makeStyles({
+export const useTooltipStyles = makeStyles({
   title: {
     fontSize: '1.5em',
   },
@@ -45,6 +46,10 @@ export const TooltipTitle = (props: TooltipTitleProps<HTMLDivElement>) => {
   );
 
   return <div {...descendantProps}>{props.content}</div>;
+};
+
+TooltipTitle.propTypes = {
+  content: PropTypes.node.isRequired,
 };
 
 /**
@@ -73,6 +78,11 @@ export const Tooltip = ({
       {contentElem}
     </MUITooltip>
   );
+};
+
+Tooltip.propTypes = {
+  title: PropTypes.oneOf([PropTypes.string, PropTypes.node]).isRequired,
+  children: PropTypes.node,
 };
 
 export default Tooltip;

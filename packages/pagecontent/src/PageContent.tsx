@@ -9,6 +9,7 @@
 
 import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
@@ -19,9 +20,10 @@ interface IPageContentProps {
   title: string,
   children: ReactNode,
   scrollable?: boolean,
+  className?: string,
 }
 
-const useStyles = makeStyles(theme => ({
+export const usePageContentStyles = makeStyles(theme => ({
   card: {
     minWidth: 275,
     width: '95%',
@@ -63,10 +65,11 @@ export const PageContent = ({
   title,
   children,
   scrollable = false,
+  className = '',
 }: IPageContentProps) => {
-  const classes = useStyles();
+  const classes = usePageContentStyles();
   return (
-    <Card className={classes.card}>
+    <Card className={clsx(classes.card, className)}>
       <CardContent>
         <div className={classes.titleContainer}>
           <Typography variant="h6" className={classes.title} gutterBottom>

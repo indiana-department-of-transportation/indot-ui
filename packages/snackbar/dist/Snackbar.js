@@ -50,7 +50,7 @@ const DEFAULT_SNACKBAR_PROPS = {
     onClose: ts_utils_1.emptyFn,
     className: '',
 };
-const useStyles = styles_1.makeStyles((theme) => ({
+exports.useSnackStyles = styles_1.makeStyles((theme) => ({
     primary: {
         backgroundColor: theme.palette.primary.main,
     },
@@ -96,7 +96,7 @@ exports.iconVariants = {
  * @returns {React.FunctionComponent} The default close button component.
  */
 exports.DefaultCloseButton = ({ onClick, }) => {
-    const classes = useStyles();
+    const classes = exports.useSnackStyles();
     return (react_1.default.createElement(IconButton_1.default, { key: "close", "aria-label": "Close", color: "inherit", onClick: onClick },
         react_1.default.createElement(Close_1.default, { className: classes.icon })));
 };
@@ -138,7 +138,7 @@ exports.DefaultActionButton.propTypes = {
 exports.TMCSnackbar = ({ message, variant, timeout = 5000, color = 'primary', action = null, closer = null, verticalAlign = 'bottom', horizontalAlign = window.matchMedia('(width > 600px)').matches
     ? 'center'
     : 'left', onAction = ts_utils_1.emptyFn, onClose = ts_utils_1.emptyFn, className = '', }) => {
-    const classes = useStyles();
+    const classes = exports.useSnackStyles();
     const snackProps = {
         onClose,
         open: Boolean(message),

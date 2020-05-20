@@ -23,7 +23,22 @@ import { useTheme } from '@material-ui/core/styles';
 
 import INDOTLogo from './indot-logo';
 
-export const AppbarLogo = () => (
+export type Titled = {
+  title: string,
+};
+
+export type AppbarBaseProps = {
+  className?: string,
+  ToolBarProps?: ToolbarProps,
+  children?: ReactNode,
+};
+
+export type TMCAppbarProps = AppbarBaseProps & Titled;
+
+/**
+ * @description Logo component for the Appbar, links to homepage.
+ */
+export const AppbarLogo: React.FunctionComponent = () => (
   <Link to="/">
     <img
       src={`data:image/png;base64, ${INDOTLogo}`}
@@ -33,11 +48,14 @@ export const AppbarLogo = () => (
   </Link>
 );
 
-export type Titled = {
-  title: string,
-};
-
-export const AppbarTitle = ({
+/**
+ * @descrpition Title component for the Appbar.
+ * 
+ * @param [props] Destructured React Props.
+ * @param props.title The Appbar Title.
+ * @returns The Appbar component.
+ */
+export const AppbarTitle: React.FunctionComponent<Titled> = ({
   title
 }: Titled) => {
   const theme = useTheme();
@@ -48,13 +66,20 @@ export const AppbarTitle = ({
   );
 };
 
-export type AppbarBaseProps = {
-  className?: string,
-  ToolBarProps?: ToolbarProps,
-  children?: ReactNode,
-}
+AppbarTitle.propTypes = {
+  title: PropTypes.string.isRequired,
+};
 
-export const AppbarBase = ({
+/**
+ * @description A Base component for TMC Appbars.
+ * 
+ * @param [props] The destructured React props.
+ * @param props.className CSS classes for the component.
+ * @param props.ToolBarProps Props for the toolbar component.
+ * @param props.children The React children.
+ * @returns The AppbarBase component.
+ */
+export const AppbarBase: React.FunctionComponent<AppbarBaseProps> = ({
   className = '',
   ToolBarProps = {},
   children,
@@ -68,9 +93,23 @@ export const AppbarBase = ({
   );
 };
 
-export type TMCAppbarProps = AppbarBaseProps & Titled;
+AppbarBase.propTypes = {
+  className: PropTypes.string,
+  ToolBarProps: PropTypes.object,
+  children: PropTypes.node,
+};
 
-export const TMCAppbar = ({
+/**
+ * @description Generic TMCAppbar Component.
+ * 
+ * @param [props] Destructured React Props.
+ * @param props.title The Appbar Title
+ * @param props.className CSS classes for the component.
+ * @param props.ToolBarProps Props for the underlying Toolbar component.
+ * @param props.children The React Children.
+ * @returns The TMCAppbar component.
+ */
+export const TMCAppbar: React.FunctionComponent<TMCAppbarProps> = ({
   title,
   className,
   ToolBarProps,
@@ -85,5 +124,10 @@ export const TMCAppbar = ({
     {children}
   </AppbarBase>
 );
+
+TMCAppbar.propTypes = {
+  title: PropTypes.string.isRequired,
+  ...AppbarBase.propTypes,
+};
 
 export default TMCAppbar;

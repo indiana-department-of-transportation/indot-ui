@@ -94,7 +94,7 @@ const DEFAULT_SNACKBAR_PROPS: ISnackbarProps = {
   className: '',
 };
 
-const useStyles = makeStyles((theme: IPojo) => ({
+export const useSnackStyles = makeStyles((theme: IPojo) => ({
   primary: {
     backgroundColor: theme.palette.primary.main,
   },
@@ -146,7 +146,7 @@ export const DefaultCloseButton = ({
 }: {
   onClick: (evt: MEvt) => void,
 }) => {
-  const classes = useStyles();
+  const classes = useSnackStyles();
   return (
     <IconButton key="close" aria-label="Close" color="inherit" onClick={onClick}>
       <CloseIcon className={classes.icon} />
@@ -217,7 +217,7 @@ export const TMCSnackbar = ({
   onClose = emptyFn,
   className = '',
 }: ISnackbarProps) => {
-  const classes = useStyles();
+  const classes = useSnackStyles();
   const snackProps: ISnackProps = {
     onClose,
     open: Boolean(message),

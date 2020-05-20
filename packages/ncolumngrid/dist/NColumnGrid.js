@@ -14,9 +14,10 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const prop_types_1 = __importDefault(require("prop-types"));
+const clsx_1 = __importDefault(require("clsx"));
 const Grid_1 = __importDefault(require("@material-ui/core/Grid"));
 const styles_1 = require("@material-ui/core/styles");
-const useStyles = styles_1.makeStyles(() => ({
+exports.useNColumnStyles = styles_1.makeStyles(() => ({
     root: {
         width: '100%',
     },
@@ -30,18 +31,26 @@ const useStyles = styles_1.makeStyles(() => ({
  * @param {number} props.columns The number of columns for the layout.
  * @returns {React.Component} The layout component.
  */
-exports.NColumnGrid = ({ items, columns = 3 }) => {
-    const classes = useStyles();
-    return (react_1.default.createElement(Grid_1.default, { container: true, justify: "center", alignItems: "center", spacing: 1, className: classes.root }, 
-    // No good way to do this.
-    // eslint-disable-next-line react/no-array-index-key
-    items.map((Item, i) => (react_1.default.createElement(Grid_1.default, { item: true, xs: 12, lg: (12 / columns), key: i }, Item)))));
+exports.NColumnGrid = ({ children, items = [], columns = 3, className = '', }) => {
+    const classes = exports.useNColumnStyles();
+    const toRender = children
+        ? react_1.default.Children.map(children, (child, i) => {
+            var _a;
+            const index = ((_a = child) === null || _a === void 0 ? void 0 : _a.id) ? child.id : i;
+            return react_1.default.createElement(Grid_1.default, { item: true, xs: 12, lg: (12 / columns), key: index }, child);
+        }) : items.map((Item, i) => {
+        var _a;
+        const index = ((_a = Item) === null || _a === void 0 ? void 0 : _a.id) ? Item.id : i;
+        return react_1.default.createElement(Grid_1.default, { item: true, xs: 12, lg: (12 / columns), key: index }, Item);
+    });
+    return (react_1.default.createElement(Grid_1.default, { container: true, justify: "center", alignItems: "center", spacing: 1, className: clsx_1.default(classes.root, className) }, toRender));
 };
 exports.NColumnGrid.defaultProps = {
+    items: undefined,
     columns: 3,
 };
 exports.NColumnGrid.propTypes = {
-    items: prop_types_1.default.arrayOf(prop_types_1.default.element).isRequired,
+    items: prop_types_1.default.arrayOf(prop_types_1.default.element),
     columns: prop_types_1.default.oneOf([1, 2, 3]),
 };
 exports.default = exports.NColumnGrid;

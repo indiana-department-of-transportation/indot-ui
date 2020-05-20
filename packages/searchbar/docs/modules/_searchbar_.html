@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>&quot;Searchbar&quot; | @indot/searchbar - v0.3.2</title>
+	<title>&quot;Searchbar&quot; | @indot/searchbar - v0.3.3</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -22,7 +22,7 @@
 						<li class="state loading">Preparing search index...</li>
 						<li class="state failure">The search index is not available</li>
 					</ul>
-					<a href="../index.html" class="title">@indot/searchbar - v0.3.2</a>
+					<a href="../index.html" class="title">@indot/searchbar - v0.3.3</a>
 				</div>
 				<div class="table-cell" id="tsd-widgets">
 					<div id="tsd-filter">
@@ -72,6 +72,7 @@
 							<h3>Variables</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="_searchbar_.html#searchbar" class="tsd-kind-icon">Searchbar</a></li>
+								<li class="tsd-kind-variable tsd-parent-kind-external-module"><a href="_searchbar_.html#usesearchbarstyles" class="tsd-kind-icon">use<wbr>Searchbar<wbr>Styles</a></li>
 							</ul>
 						</section>
 					</div>
@@ -82,10 +83,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
 					<a name="searchbar" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagConst">Const</span> Searchbar</h3>
-					<div class="tsd-signature tsd-kind-icon">Searchbar<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ForwardRefExoticComponent</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ISearchbarProps</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">RefAttributes</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;React.forwardRef(({onSearch,onChange &#x3D; noop,placeholder &#x3D; &#x27;Search…&#x27;,// eslint-disable-next-line no-unused-vars}: ISearchbarProps, ref) &#x3D;&gt; {const classes &#x3D; useStyles();const [currentValue, setValue] &#x3D; useState(&#x27;&#x27;);const onKeyPress &#x3D; (evt: IKeyCode) &#x3D;&gt; {if (evt.keyCode &#x3D;&#x3D;&#x3D; 13 || (evt.key &amp;&amp; evt.key &#x3D;&#x3D;&#x3D; &#x27;enter&#x27;)) {onSearch(currentValue);}};const changeHandler &#x3D; (evt: IChange) &#x3D;&gt; {const val &#x3D; evt.target ? (evt.target as HTMLInputElement).value : null;setValue(val || &#x27;&#x27;);onChange(evt);};return (&lt;div className&#x3D;{classes.search}&gt;&lt;div className&#x3D;{classes.searchIcon}&gt;&lt;SearchIcon onClick&#x3D;{() &#x3D;&gt; onSearch(currentValue)} /&gt;&lt;/div&gt;&lt;InputBaseplaceholder&#x3D;{placeholder}onChange&#x3D;{changeHandler}onKeyDown&#x3D;{onKeyPress}value&#x3D;{currentValue}classes&#x3D;{{root: classes.inputRoot,input: classes.inputInput,}}/&gt;&lt;/div&gt;);})</span></div>
+					<div class="tsd-signature tsd-kind-icon">Searchbar<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">ForwardRefExoticComponent</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ISearchbarProps</span><span class="tsd-signature-symbol"> &amp; </span><span class="tsd-signature-type">RefAttributes</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">unknown</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;React.forwardRef(({onSearch,onChange &#x3D; emptyFn,placeholder &#x3D; &#x27;Search…&#x27;,autoFocus &#x3D; false,// eslint-disable-next-line no-unused-vars}: ISearchbarProps, ref) &#x3D;&gt; {const classes &#x3D; useSearchbarStyles();const [currentValue, setValue] &#x3D; useState(&#x27;&#x27;);const onKeyPress &#x3D; (evt: IKeyCode) &#x3D;&gt; {if (evt.keyCode &#x3D;&#x3D;&#x3D; 13 || (evt.key &amp;&amp; evt.key &#x3D;&#x3D;&#x3D; &#x27;enter&#x27;)) {onSearch(currentValue);}};const changeHandler &#x3D; (evt: IChange) &#x3D;&gt; {const val &#x3D; evt.target ? (evt.target as HTMLInputElement).value : null;setValue(val || &#x27;&#x27;);onChange(evt);};return (&lt;div className&#x3D;{classes.search}&gt;&lt;div className&#x3D;{classes.searchIcon}&gt;&lt;SearchIcon onClick&#x3D;{() &#x3D;&gt; onSearch(currentValue)} /&gt;&lt;/div&gt;&lt;InputBaseautoFocus&#x3D;{autoFocus}placeholder&#x3D;{placeholder}onChange&#x3D;{changeHandler}onKeyDown&#x3D;{onKeyPress}value&#x3D;{currentValue}classes&#x3D;{{root: classes.inputRoot,input: classes.inputInput,}}/&gt;&lt;/div&gt;);})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/indiana-department-of-transportation/indot-ui/blob/d0cdb48/packages/searchbar/src/Searchbar.tsx#L91">Searchbar.tsx:91</a></li>
+							<li>Defined in <a href="https://github.com/indiana-department-of-transportation/indot-ui/blob/d8bb4ba/packages/searchbar/src/Searchbar.tsx#L96">packages/searchbar/src/Searchbar.tsx:96</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -108,12 +109,53 @@
 							<dd><p>Placeholder text for the search input. Defaults to &#39;Search...&#39;.</p>
 							</dd>
 							<dt>param</dt>
+							<dd><p>Whether or not the searchbar is automatically focused.</p>
+							</dd>
+							<dt>param</dt>
 							<dd><p>The React DOM ref, needed because MUI Tooltip requires it.</p>
 							</dd>
 							<dt>returns</dt>
 							<dd><p>The Searchbar component.</p>
 							</dd>
 						</dl>
+					</div>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-variable tsd-parent-kind-external-module">
+					<a name="usesearchbarstyles" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagConst">Const</span> use<wbr>Searchbar<wbr>Styles</h3>
+					<div class="tsd-signature tsd-kind-icon">use<wbr>Searchbar<wbr>Styles<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span><span class="tsd-signature-symbol"> =&nbsp;makeStyles(theme &#x3D;&gt; ({search: {position: &#x27;relative&#x27;,borderRadius: theme.shape.borderRadius,backgroundColor: fade(theme.palette.common.white, 0.15),&#x27;&amp;:hover&#x27;: {backgroundColor: fade(theme.palette.common.white, 0.25),},marginRight: theme.spacing(2),marginLeft: 0,width: &#x27;100%&#x27;,[theme.breakpoints.up(&#x27;sm&#x27;)]: {marginLeft: theme.spacing(3),width: &#x27;auto&#x27;,},},searchIcon: {width: theme.spacing(9),height: &#x27;100%&#x27;,position: &#x27;absolute&#x27;,pointerEvents: &#x27;none&#x27;,display: &#x27;flex&#x27;,alignItems: &#x27;center&#x27;,justifyContent: &#x27;center&#x27;,},inputRoot: {color: &#x27;inherit&#x27;,width: &#x27;100%&#x27;,},inputInput: {paddingTop: theme.spacing(1),paddingRight: theme.spacing(1),paddingBottom: theme.spacing(1),paddingLeft: theme.spacing(10),transition: theme.transitions.create(&#x27;width&#x27;),width: &#x27;100%&#x27;,[theme.breakpoints.up(&#x27;md&#x27;)]: {width: 200,},},}))</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/indiana-department-of-transportation/indot-ui/blob/d8bb4ba/packages/searchbar/src/Searchbar.tsx#L42">packages/searchbar/src/Searchbar.tsx:42</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-comment tsd-typography">
+						<dl class="tsd-comment-tags">
+							<dt>description</dt>
+							<dd><p>React Hook for using Searchbar CSS classes.</p>
+							</dd>
+						</dl>
+					</div>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-variable tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>props<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">ClassNameMap</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ClassKey</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5><span class="tsd-flag ts-flagOptional">Optional</span> props: <span class="tsd-signature-type">any</span></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">ClassNameMap</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ClassKey</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
 					</div>
 				</section>
 			</section>
@@ -136,6 +178,9 @@
 				<ul class="before-current">
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
 						<a href="_searchbar_.html#searchbar" class="tsd-kind-icon">Searchbar</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+						<a href="_searchbar_.html#usesearchbarstyles" class="tsd-kind-icon">use<wbr>Searchbar<wbr>Styles</a>
 					</li>
 				</ul>
 			</nav>

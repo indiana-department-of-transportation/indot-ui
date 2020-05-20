@@ -16,6 +16,8 @@ import { fade } from '@material-ui/core/styles/colorManipulator';
 
 import SearchIcon from '@material-ui/icons/Search';
 
+import { emptyFn } from '@jasmith79/ts-utils';
+
 interface IKeyCode {
   keyCode?: number,
   key?: string,
@@ -31,11 +33,13 @@ interface ISearchbarProps {
   onSearch: (value: string) => void,
   onChange?: (evt: IChange) => void,
   placeholder?: string,
+  autoFocus?: boolean,
 }
 
-const noop = (...args: any[]) => {};
-
-const useStyles = makeStyles(theme => ({
+/**
+ * @description React Hook for using Searchbar CSS classes.
+ */
+export const useSearchbarStyles = makeStyles(theme => ({
   search: {
     position: 'relative',
     borderRadius: theme.shape.borderRadius,
@@ -85,16 +89,18 @@ const useStyles = makeStyles(theme => ({
  * @param {Function} props.onChange An optional onChange handler to e.g. Filter results while the
  * user is typing.
  * @param {string} props.placeholder Placeholder text for the search input. Defaults to 'Search...'.
+ * @param {boolean} props.autoFocus Whether or not the searchbar is automatically focused.
  * @param {Any} ref The React DOM ref, needed because MUI Tooltip requires it.
  * @returns {React.FunctionComponent} The Searchbar component.
  */
 export const Searchbar = React.forwardRef(({
   onSearch,
-  onChange = noop,
+  onChange = emptyFn,
   placeholder = 'Search…',
+  autoFocus = false,
   // eslint-disable-next-line no-unused-vars
 }: ISearchbarProps, ref) => {
-  const classes = useStyles();
+  const classes = useSearchbarStyles();
   const [currentValue, setValue] = useState('');
   const onKeyPress = (evt: IKeyCode) => {
     if (evt.keyCode === 13 || (evt.key && evt.key === 'enter')) {
@@ -114,6 +120,7 @@ export const Searchbar = React.forwardRef(({
         <SearchIcon onClick={() => onSearch(currentValue)} />
       </div>
       <InputBase
+        autoFocus={autoFocus}
         placeholder={placeholder}
         onChange={changeHandler}
         onKeyDown={onKeyPress}

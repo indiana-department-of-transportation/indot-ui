@@ -17,6 +17,7 @@ import TMCMarker from './TMCMarker';
 import TMCLeafletBase from './TMCLeafletBase';
 import defaultMarkerIcon from './marker-icon'; // Again, leaflet grrh argh.
 
+// @ts-ignore
 const Leaflet = window.L;
 export { TMCMap, TMCPoly, TMCMarker, TMCLeafletBase, defaultMarkerIcon, Leaflet };
 export default TMCMap;

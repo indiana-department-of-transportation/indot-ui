@@ -15,8 +15,9 @@ import PropTypes from 'prop-types';
  * @returns {React.FunctionComponent} The login form component.
  */
 export declare const Login: {
-    ({ login, }: {
+    ({ login, className, }: {
         login: (userName: string, userPass: string) => void;
+        className?: string | undefined;
     }): JSX.Element;
     propTypes: {
         login: PropTypes.Validator<(...args: any[]) => any>;

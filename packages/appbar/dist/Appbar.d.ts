@@ -6,65 +6,48 @@
  * @license MIT
  * @copyright INDOT, 2019
  */
-import { ReactNode } from 'react';
-import PropTypes from 'prop-types';
-import { IPojo } from '@jasmith79/ts-utils';
-interface IAppbarUser extends IPojo {
-    userName: string;
-}
-interface IPlainAppBarProps {
-    title: string | ReactNode;
-    Searchbar?: ReactNode;
-}
-interface ILoginAppbarProps extends IPlainAppBarProps {
-    Account: ReactNode;
-    user: IAppbarUser;
-    logoff: () => void;
-}
-/**
- * @description A simple app bar for TMC Applications.
- * @param {Object} [props] The destructured props object.
- * @param {string} props.title The header title.
- * @param {React.Component} props.Searchbar An optional searchbar component.
- * @returns {React.FunctionComponent} The Appbar component.
- */
-export declare const TMCAppbar: {
-    ({ title, Searchbar, }: IPlainAppBarProps): JSX.Element;
-    defaultProps: {
-        Searchbar: undefined;
-    };
-    propTypes: {
-        title: PropTypes.Validator<string>;
-        Searchbar: PropTypes.Requireable<PropTypes.ReactNodeLike>;
-    };
+import React, { ReactNode } from 'react';
+import { ToolbarProps } from '@material-ui/core/Toolbar';
+export declare type Titled = {
+    title: string;
 };
-/**
- * @description An app bar for TMC Applications with login and account management.
- * @param {Object} [props] The destructured props object.
- * @param {string} props.title The header title.
- * @param {React.Component} props.Searchbar An optional searchbar component.
- * @param {Object} props.user The logged in user.
- * @param {Function} props.logoff The logoff function.
- * @param {React.Component} props.Account An optional account management component.
- * @returns {React.FunctionComponent} The Appbar component.
- */
-export declare const TMCUserAppbar: {
-    ({ title, Searchbar, user, logoff, Account, }: ILoginAppbarProps): JSX.Element;
-    defaultProps: {
-        user: {
-            userName: string;
-        };
-        logoff: (..._args: any[]) => void;
-        Account: JSX.Element;
-    };
-    propTypes: {
-        title: PropTypes.Validator<string>;
-        Searchbar: PropTypes.Requireable<PropTypes.ReactNodeLike>;
-        user: PropTypes.Requireable<PropTypes.InferProps<{
-            userName: PropTypes.Requireable<string>;
-        }>>;
-        logoff: PropTypes.Requireable<(...args: any[]) => any>;
-        Account: PropTypes.Requireable<PropTypes.ReactNodeLike>;
-    };
+export declare type AppbarBaseProps = {
+    className?: string;
+    ToolBarProps?: ToolbarProps;
+    children?: ReactNode;
 };
+export declare type TMCAppbarProps = AppbarBaseProps & Titled;
+/**
+ * @description Logo component for the Appbar, links to homepage.
+ */
+export declare const AppbarLogo: React.FunctionComponent;
+/**
+ * @descrpition Title component for the Appbar.
+ *
+ * @param [props] Destructured React Props.
+ * @param props.title The Appbar Title.
+ * @returns The Appbar component.
+ */
+export declare const AppbarTitle: React.FunctionComponent<Titled>;
+/**
+ * @description A Base component for TMC Appbars.
+ *
+ * @param [props] The destructured React props.
+ * @param props.className CSS classes for the component.
+ * @param props.ToolBarProps Props for the toolbar component.
+ * @param props.children The React children.
+ * @returns The AppbarBase component.
+ */
+export declare const AppbarBase: React.FunctionComponent<AppbarBaseProps>;
+/**
+ * @description Generic TMCAppbar Component.
+ *
+ * @param [props] Destructured React Props.
+ * @param props.title The Appbar Title
+ * @param props.className CSS classes for the component.
+ * @param props.ToolBarProps Props for the underlying Toolbar component.
+ * @param props.children The React Children.
+ * @returns The TMCAppbar component.
+ */
+export declare const TMCAppbar: React.FunctionComponent<TMCAppbarProps>;
 export default TMCAppbar;

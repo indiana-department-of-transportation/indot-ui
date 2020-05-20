@@ -20,13 +20,18 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importStar(require("react"));
 const prop_types_1 = __importDefault(require("prop-types"));
+const clsx_1 = __importDefault(require("clsx"));
 const react_router_dom_1 = require("react-router-dom");
 const Tooltip_1 = __importDefault(require("@material-ui/core/Tooltip"));
 const Menu_1 = __importDefault(require("@material-ui/core/Menu"));
 const MenuItem_1 = __importDefault(require("@material-ui/core/MenuItem"));
 const styles_1 = require("@material-ui/core/styles");
 const AccountCircleOutlined_1 = __importDefault(require("@material-ui/icons/AccountCircleOutlined"));
-const useStyles = styles_1.makeStyles(() => ({
+const usetmcuser_1 = require("@indot/usetmcuser");
+/**
+ * @description React Hook for generating classes used by the Account component.
+ */
+exports.useAccountStyles = styles_1.makeStyles(() => ({
     icon: {
         position: 'relative',
         width: '48px',
@@ -40,8 +45,10 @@ const useStyles = styles_1.makeStyles(() => ({
  * @param {Function} props.logoff Function to log the user off.
  * @returns {React.FunctionComponent} The account management component.
  */
-exports.Account = ({ logoff, userName = '' }) => {
-    const classes = useStyles();
+exports.Account = ({ logoff, className = '', }) => {
+    const user = usetmcuser_1.useUser();
+    const userName = user?.user_name || '';
+    const classes = exports.useAccountStyles();
     const [anchor, setAnchor] = react_1.useState();
     const [redirected, setRedirected] = react_1.useState(false);
     const logout = () => {
@@ -52,13 +59,14 @@ exports.Account = ({ logoff, userName = '' }) => {
         ? react_1.default.createElement(react_router_dom_1.Redirect, { to: "/login" })
         : (react_1.default.createElement(react_1.default.Fragment, null,
             react_1.default.createElement(Tooltip_1.default, { title: userName },
-                react_1.default.createElement(AccountCircleOutlined_1.default, { className: classes.icon, "aria-haspopup": true, onClick: (evt) => setAnchor(evt.target) })),
+                react_1.default.createElement(AccountCircleOutlined_1.default, { className: clsx_1.default(classes.icon, className), "aria-haspopup": true, onClick: (evt) => setAnchor(evt.target) })),
             react_1.default.createElement(Menu_1.default, { open: Boolean(anchor), id: "acct-menu", onClose: () => setAnchor(undefined), anchorEl: anchor },
                 react_1.default.createElement(MenuItem_1.default, { disabled: true }, userName),
                 react_1.default.createElement(MenuItem_1.default, { onClick: logout, className: "logoff" }, "Log Off")))));
 };
 exports.Account.propTypes = {
     logoff: prop_types_1.default.func.isRequired,
+    className: prop_types_1.default.string,
 };
 exports.default = exports.Account;
 //# sourceMappingURL=Account.js.map

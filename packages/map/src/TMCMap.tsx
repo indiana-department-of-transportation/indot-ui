@@ -31,7 +31,7 @@ interface IMapProps {
 const OSM_ATTR = `&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors`;
 const DEFAULT_CENTER: [number, number] = [39.8, -86.16];
 
-const useMapStyles = makeStyles({
+export const useMapStyles = makeStyles({
   defaultMap: {
     height: '300px',
     width: '400px',

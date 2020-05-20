@@ -14,74 +14,65 @@ Object.defineProperty(exports, "__esModule", { value: true });
 const react_1 = __importDefault(require("react"));
 const prop_types_1 = __importDefault(require("prop-types"));
 const react_router_dom_1 = require("react-router-dom");
-const ts_utils_1 = require("@jasmith79/ts-utils");
 const AppBar_1 = __importDefault(require("@material-ui/core/AppBar"));
-const Toolbar_1 = __importDefault(require("@material-ui/core/Toolbar"));
 const Typography_1 = __importDefault(require("@material-ui/core/Typography"));
+const Toolbar_1 = __importDefault(require("@material-ui/core/Toolbar"));
 const styles_1 = require("@material-ui/core/styles");
-const account_1 = __importDefault(require("@indot/account"));
 const indot_logo_1 = __importDefault(require("./indot-logo"));
 /**
- * @description A simple app bar for TMC Applications.
- * @param {Object} [props] The destructured props object.
- * @param {string} props.title The header title.
- * @param {React.Component} props.Searchbar An optional searchbar component.
- * @returns {React.FunctionComponent} The Appbar component.
+ * @description Logo component for the Appbar, links to homepage.
  */
-exports.TMCAppbar = ({ title, Searchbar, }) => {
+exports.AppbarLogo = () => (react_1.default.createElement(react_router_dom_1.Link, { to: "/" },
+    react_1.default.createElement("img", { src: `data:image/png;base64, ${indot_logo_1.default}`, alt: "INDOT logo", style: { width: '48px', height: '48px' } })));
+/**
+ * @descrpition Title component for the Appbar.
+ *
+ * @param [props] Destructured React Props.
+ * @param props.title The Appbar Title.
+ * @returns The Appbar component.
+ */
+exports.AppbarTitle = ({ title }) => {
     const theme = styles_1.useTheme();
-    return (react_1.default.createElement(AppBar_1.default, null,
-        react_1.default.createElement(Toolbar_1.default, null,
-            react_1.default.createElement(react_router_dom_1.Link, { to: "/" },
-                react_1.default.createElement("img", { src: `data:image/png;base64, ${indot_logo_1.default}`, alt: "INDOT logo", style: { width: '48px', height: '48px' } })),
-            react_1.default.createElement(Typography_1.default, { variant: "h6", style: { marginLeft: theme.spacing(2) } }, title),
-            Searchbar)));
+    return (react_1.default.createElement(Typography_1.default, { variant: "h6", style: { marginLeft: theme.spacing(2) } }, title));
 };
-exports.TMCAppbar.defaultProps = {
-    Searchbar: undefined,
-};
-exports.TMCAppbar.propTypes = {
+exports.AppbarTitle.propTypes = {
     title: prop_types_1.default.string.isRequired,
-    Searchbar: prop_types_1.default.node,
 };
 /**
- * @description An app bar for TMC Applications with login and account management.
- * @param {Object} [props] The destructured props object.
- * @param {string} props.title The header title.
- * @param {React.Component} props.Searchbar An optional searchbar component.
- * @param {Object} props.user The logged in user.
- * @param {Function} props.logoff The logoff function.
- * @param {React.Component} props.Account An optional account management component.
- * @returns {React.FunctionComponent} The Appbar component.
+ * @description A Base component for TMC Appbars.
+ *
+ * @param [props] The destructured React props.
+ * @param props.className CSS classes for the component.
+ * @param props.ToolBarProps Props for the toolbar component.
+ * @param props.children The React children.
+ * @returns The AppbarBase component.
  */
-exports.TMCUserAppbar = ({ title, Searchbar, user = { userName: '' }, logoff = ts_utils_1.emptyFn, Account = react_1.default.createElement(account_1.default, { userName: user.userName, logoff: logoff }), }) => {
-    const theme = styles_1.useTheme();
-    return (react_1.default.createElement(AppBar_1.default, null,
-        react_1.default.createElement(Toolbar_1.default, null,
-            react_1.default.createElement(react_router_dom_1.Link, { to: "/" },
-                react_1.default.createElement("img", { src: indot_logo_1.default, alt: "INDOT logo", style: { width: '48px', height: '48px' } })),
-            react_1.default.createElement(Typography_1.default, { variant: "h6", style: { marginLeft: theme.spacing(2) } }, title),
-            Searchbar,
-            react_1.default.createElement("div", { style: {
-                    display: 'flex',
-                    flexWrap: 'nowrap',
-                    justifyContent: 'flex-end',
-                    flexGrow: 4,
-                } }, Account))));
+exports.AppbarBase = ({ className = '', ToolBarProps = {}, children, }) => {
+    return (react_1.default.createElement(AppBar_1.default, { className: className },
+        react_1.default.createElement(Toolbar_1.default, Object.assign({}, ToolBarProps), children)));
 };
-exports.TMCUserAppbar.defaultProps = {
-    user: { userName: '' },
-    logoff: ts_utils_1.emptyFn,
-    Account: react_1.default.createElement(account_1.default, { userName: '', logoff: ts_utils_1.emptyFn }),
+exports.AppbarBase.propTypes = {
+    className: prop_types_1.default.string,
+    ToolBarProps: prop_types_1.default.object,
+    children: prop_types_1.default.node,
 };
-exports.TMCUserAppbar.propTypes = {
+/**
+ * @description Generic TMCAppbar Component.
+ *
+ * @param [props] Destructured React Props.
+ * @param props.title The Appbar Title
+ * @param props.className CSS classes for the component.
+ * @param props.ToolBarProps Props for the underlying Toolbar component.
+ * @param props.children The React Children.
+ * @returns The TMCAppbar component.
+ */
+exports.TMCAppbar = ({ title, className, ToolBarProps, children }) => (react_1.default.createElement(exports.AppbarBase, { className: className, ToolBarProps: ToolBarProps },
+    react_1.default.createElement(exports.AppbarLogo, null),
+    react_1.default.createElement(exports.AppbarTitle, { title: title }),
+    children));
+exports.TMCAppbar.propTypes = {
     title: prop_types_1.default.string.isRequired,
-    Searchbar: prop_types_1.default.node,
-    user: prop_types_1.default.shape({
-        userName: prop_types_1.default.string,
-    }),
-    logoff: prop_types_1.default.func,
-    Account: prop_types_1.default.node,
+    ...exports.AppbarBase.propTypes,
 };
 exports.default = exports.TMCAppbar;
 //# sourceMappingURL=Appbar.js.map

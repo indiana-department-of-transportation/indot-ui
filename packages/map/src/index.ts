@@ -22,6 +22,7 @@ import defaultMarkerIcon from './marker-icon';
 interface Window {
   L: any,
 }
+
 // @ts-ignore
 const Leaflet = window.L;
 

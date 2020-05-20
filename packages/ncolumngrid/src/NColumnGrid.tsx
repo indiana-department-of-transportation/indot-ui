@@ -10,11 +10,12 @@
 
 import React, { ReactNode } from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 
 import Grid from '@material-ui/core/Grid';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles(() => ({
+export const useNColumnStyles = makeStyles(() => ({
   root: {
     width: '100%',
   },
@@ -26,6 +27,7 @@ type NColumnGridProps = {
   items?: Array<ReactNode>,
   columns?: onetwothree,
   children?: React.ReactNode,
+  className?: string,
 }
 
 /**
@@ -37,8 +39,13 @@ type NColumnGridProps = {
  * @param {number} props.columns The number of columns for the layout.
  * @returns {React.Component} The layout component.
  */
-export const NColumnGrid = ({ children, items = [], columns = 3 }: NColumnGridProps) => {
-  const classes = useStyles();
+export const NColumnGrid = ({
+  children,
+  items = [],
+  columns = 3,
+  className = '',
+}: NColumnGridProps) => {
+  const classes = useNColumnStyles();
   const toRender = children
     ? React.Children.map(children, (child, i) => {
       const index = (child as any)?.id ? (child as any).id : i;
@@ -54,7 +61,7 @@ export const NColumnGrid = ({ children, items = [], columns = 3 }: NColumnGridPr
       justify="center"
       alignItems="center"
       spacing={1}
-      className={classes.root}
+      className={clsx(classes.root, className)}
     >
       {toRender}
     </Grid>

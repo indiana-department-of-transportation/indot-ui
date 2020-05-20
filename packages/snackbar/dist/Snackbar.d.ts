@@ -27,6 +27,7 @@ export interface ISnackbarProps {
     onClose?: (evt?: SyntheticEvent<any, Event>) => void;
     className?: string;
 }
+export declare const useSnackStyles: (props?: any) => Record<"error" | "message" | "success" | "icon" | "warning" | "primary" | "secondary" | "info" | "iconVariant", string>;
 export declare const iconVariants: {
     success: import("@material-ui/core/OverridableComponent").OverridableComponent<import("@material-ui/core").SvgIconTypeMap<{}, "svg">>;
     warning: import("@material-ui/core/OverridableComponent").OverridableComponent<import("@material-ui/core").SvgIconTypeMap<{}, "svg">>;

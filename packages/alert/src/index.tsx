@@ -15,6 +15,7 @@ import React, {
   SyntheticEvent,
   ReactNode,
 } from 'react';
+import PropTypes from 'prop-types';
 
 import {
   emptyFn,
@@ -32,17 +33,14 @@ type ClickProps = {
   onClick: (evt: SyntheticEvent) => void,
 };
 
-type Clickable = {
-  (props: ClickProps): JSX.Element,
-};
-
 type AlertProps = {
   title: string,
   children: ReactNode,
+  className?: string,
   timeout?: number,
   onConfirm?: (evt: SyntheticEvent) => void,
-  Confirmer?: Clickable,
-  Closer?: Clickable,
+  Confirmer?: React.FunctionComponent<ClickProps>,
+  Closer?: React.FunctionComponent<ClickProps>,
   onClose?: () => void,
 };
 
@@ -53,7 +51,7 @@ type AlertProps = {
  * @param prop.onClick The click event handler.
  * @returns Close button element.
  */
-const DEFAULT_CLOSER: Clickable = ({
+const DEFAULT_CLOSER: React.FunctionComponent<ClickProps> = ({
   onClick,
 }) => (
   <Button
@@ -65,11 +63,16 @@ const DEFAULT_CLOSER: Clickable = ({
   </Button>
 );
 
+DEFAULT_CLOSER.propTypes = {
+  onClick: PropTypes.func.isRequired,
+};
+
 /**
  * @description A UIAlert for notifying the user of important information.
  *
- * @param props.title The dialog title.
  * @param [props] The destructured React props.
+ * @param props.className CSS classes for the component.
+ * @param props.title The dialog title.
  * @param props.children The React children, should be the contents of the alert dialog.
  * @param props.timeout Optional timeout for automatic closing.
  * @param props.onConfirm Callback for user confirmation.
@@ -80,10 +83,11 @@ const DEFAULT_CLOSER: Clickable = ({
  */
 export const Alert = ({
   children,
-  timeout,
   title,
+  timeout,
   onConfirm,
   Confirmer,
+  className = '',
   onClose = emptyFn,
   Closer = DEFAULT_CLOSER,
 }: AlertProps) => {
@@ -125,6 +129,7 @@ export const Alert = ({
   return <Dialog
     onClose={handleClose}
     open={isOpen}
+    className={className}
   >
     <DialogTitle id="alert-dialog-title">{title}</DialogTitle>
     <DialogContent>
@@ -137,6 +142,17 @@ export const Alert = ({
       <Closer onClick={handleClose} />
     </DialogActions>
   </Dialog>
+};
+
+Alert.propTypes = {
+  children: PropTypes.node.isRequired,
+  title: PropTypes.string.isRequired,
+  timeout: PropTypes.number,
+  onConfirm: PropTypes.func,
+  Confirmer: PropTypes.node,
+  className: PropTypes.string,
+  onClose: PropTypes.node,
+  Closer: PropTypes.string,
 };
 
 export default Alert;

@@ -9,6 +9,7 @@
  */
 import React from 'react';
 import PropTypes from 'prop-types';
+import { LeafletEvents } from 'react-leaflet';
 interface IMapProps {
     position?: [number, number];
     tileURL?: string;
@@ -16,7 +17,10 @@ interface IMapProps {
     children?: React.ReactNode;
     className?: string;
     isFullScreen?: boolean;
+    onMoveEnd?: (evt: LeafletEvents) => void;
+    onZoomStart?: (evt: LeafletEvents) => void;
 }
+export declare const useMapStyles: (props?: any) => Record<"defaultMap" | "fullscreen", string>;
 /**
  * @description The TMC leaflet map component.
  *
@@ -28,7 +32,7 @@ interface IMapProps {
  * @returns {React.FunctionComponent} The map component.
  */
 export declare const TMCMap: {
-    ({ position, tileURL, initZoom, className, isFullScreen, children, }: IMapProps): JSX.Element;
+    (props: IMapProps): JSX.Element;
     defaultProps: {
         position: [number, number];
         tileURL: string;

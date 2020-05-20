@@ -9,6 +9,7 @@
 
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
+import clsx from 'clsx';
 import { Redirect } from 'react-router-dom';
 
 import Tooltip from '@material-ui/core/Tooltip';
@@ -20,7 +21,10 @@ import AccountCirleOutlined from '@material-ui/icons/AccountCircleOutlined';
 
 import { useUser } from '@indot/usetmcuser';
 
-const useStyles = makeStyles(() => ({
+/**
+ * @description React Hook for generating classes used by the Account component.
+ */
+export const useAccountStyles = makeStyles(() => ({
   icon: {
     position: 'relative',
     width: '48px',
@@ -37,12 +41,14 @@ const useStyles = makeStyles(() => ({
  */
 export const Account = ({
   logoff,
+  className = '',
 }: {
   logoff: () => void,
+  className?: string,
 }) => {
   const user = useUser();
   const userName = user?.user_name || '';
-  const classes = useStyles();
+  const classes = useAccountStyles();
   const [anchor, setAnchor] = useState<HTMLElement>();
   const [redirected, setRedirected] = useState(false);
   const logout = () => {
@@ -57,7 +63,7 @@ export const Account = ({
         <React.Fragment>
           <Tooltip title={userName}>
             <AccountCirleOutlined
-              className={classes.icon}
+              className={clsx(classes.icon, className)}
               aria-haspopup
               onClick={(evt: React.SyntheticEvent) => setAnchor(evt.target as HTMLElement)}
             />
@@ -78,6 +84,7 @@ export const Account = ({
 
 Account.propTypes = {
   logoff: PropTypes.func.isRequired,
+  className: PropTypes.string,
 };
 
 export default Account;

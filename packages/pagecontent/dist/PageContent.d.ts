@@ -12,7 +12,9 @@ interface IPageContentProps {
     title: string;
     children: ReactNode;
     scrollable?: boolean;
+    className?: string;
 }
+export declare const usePageContentStyles: (props?: any) => Record<"title" | "scrollable" | "card" | "titleContainer", string>;
 /**
  * @description Page content container component.
  *
@@ -23,7 +25,7 @@ interface IPageContentProps {
  * @returns {React.FunctionComponent} The container component.
  */
 export declare const PageContent: {
-    ({ title, children, scrollable, }: IPageContentProps): JSX.Element;
+    ({ title, children, scrollable, className, }: IPageContentProps): JSX.Element;
     defaultProps: {
         scrollable: boolean;
     };

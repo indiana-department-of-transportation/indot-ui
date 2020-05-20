@@ -34,8 +34,10 @@ const throwIfEmpty = (s: string) => {
  */
 export const Login = ({
   login,
+  className = '',
 }: {
   login: (userName: string, userPass: string) => void,
+  className?: string,
 }) => {
   const user = useUser();
   const [userName, setUserName] = useLocalState('crashmap/user', user.user_name);
@@ -46,7 +48,7 @@ export const Login = ({
   }, []);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className={className}>
       <Grid
         container
         direction="column"
@@ -67,6 +69,7 @@ export const Login = ({
               name,
             }) => (
                 <TextField
+                  autoFocus
                   onChange={onChange}
                   onBlur={onBlur}
                   value={value}

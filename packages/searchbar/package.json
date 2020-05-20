@@ -35,7 +35,7 @@
     "@types/enzyme-adapter-react-16": "^1.0.5",
     "@types/jest": "^24.0.18",
     "@types/prop-types": "^15.7.3",
-    "@types/react": "^16.9.5",
+    "@types/react": "^16.9.35",
     "enzyme": "^3.10.0",
     "enzyme-adapter-react-16": "^1.14.0",
     "jest": "^24.9.0",
@@ -52,5 +52,9 @@
   "publishConfig": {
     "access": "public"
   },
-  "gitHead": "cdd47eb2af0640ee9492e363a483a5349fee943c"
+  "gitHead": "cdd47eb2af0640ee9492e363a483a5349fee943c",
+  "dependencies": {
+    "@jasmith79/ts-utils": "^0.8.0",
+    "clsx": "^1.1.0"
+  }
 }

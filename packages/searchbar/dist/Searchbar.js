@@ -24,8 +24,11 @@ const InputBase_1 = __importDefault(require("@material-ui/core/InputBase"));
 const styles_1 = require("@material-ui/core/styles");
 const colorManipulator_1 = require("@material-ui/core/styles/colorManipulator");
 const Search_1 = __importDefault(require("@material-ui/icons/Search"));
-const noop = (...args) => { };
-const useStyles = styles_1.makeStyles(theme => ({
+const ts_utils_1 = require("@jasmith79/ts-utils");
+/**
+ * @description React Hook for using Searchbar CSS classes.
+ */
+exports.useSearchbarStyles = styles_1.makeStyles(theme => ({
     search: {
         position: 'relative',
         borderRadius: theme.shape.borderRadius,
@@ -74,11 +77,12 @@ const useStyles = styles_1.makeStyles(theme => ({
  * @param {Function} props.onChange An optional onChange handler to e.g. Filter results while the
  * user is typing.
  * @param {string} props.placeholder Placeholder text for the search input. Defaults to 'Search...'.
+ * @param {boolean} props.autoFocus Whether or not the searchbar is automatically focused.
  * @param {Any} ref The React DOM ref, needed because MUI Tooltip requires it.
  * @returns {React.FunctionComponent} The Searchbar component.
  */
-exports.Searchbar = react_1.default.forwardRef(({ onSearch, onChange = noop, placeholder = 'Search…', }, ref) => {
-    const classes = useStyles();
+exports.Searchbar = react_1.default.forwardRef(({ onSearch, onChange = ts_utils_1.emptyFn, placeholder = 'Search…', autoFocus = false, }, ref) => {
+    const classes = exports.useSearchbarStyles();
     const [currentValue, setValue] = react_1.useState('');
     const onKeyPress = (evt) => {
         if (evt.keyCode === 13 || (evt.key && evt.key === 'enter')) {
@@ -93,7 +97,7 @@ exports.Searchbar = react_1.default.forwardRef(({ onSearch, onChange = noop, pla
     return (react_1.default.createElement("div", { className: classes.search },
         react_1.default.createElement("div", { className: classes.searchIcon },
             react_1.default.createElement(Search_1.default, { onClick: () => onSearch(currentValue) })),
-        react_1.default.createElement(InputBase_1.default, { placeholder: placeholder, onChange: changeHandler, onKeyDown: onKeyPress, value: currentValue, classes: {
+        react_1.default.createElement(InputBase_1.default, { autoFocus: autoFocus, placeholder: placeholder, onChange: changeHandler, onKeyDown: onKeyPress, value: currentValue, classes: {
                 root: classes.inputRoot,
                 input: classes.inputInput,
             } })));

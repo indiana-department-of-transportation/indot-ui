@@ -9,6 +9,10 @@
 /// <reference types="react" />
 import PropTypes from 'prop-types';
 /**
+ * @description React Hook for generating classes used by the Account component.
+ */
+export declare const useAccountStyles: (props?: any) => Record<"icon", string>;
+/**
  * @description An account management component.
  *
  * @param {Object} [props] The props object.
@@ -16,12 +20,13 @@ import PropTypes from 'prop-types';
  * @returns {React.FunctionComponent} The account management component.
  */
 export declare const Account: {
-    ({ logoff, userName }: {
+    ({ logoff, className, }: {
         logoff: () => void;
-        userName?: string | undefined;
+        className?: string | undefined;
     }): JSX.Element;
     propTypes: {
         logoff: PropTypes.Validator<(...args: any[]) => any>;
+        className: PropTypes.Requireable<string>;
     };
 };
 export default Account;
