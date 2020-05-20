@@ -95,22 +95,11 @@ export const useValidatingInput = <T,>({
   };
 };
 
-<<<<<<< HEAD
-  const renderTarget = component
-    ? () => { const Component = component; return <Component {...params} />; }
-    : render
-      ? render
-      : typeof children === 'function'
-        ? children
-        : null;
-
-=======
 export const ValidatingInput = <T,>(
   props: ValidatingInputProps<T> & RenderProps<ValidatingInputParams>,
 ) => {
   const params = useValidatingInput(props);
   const renderTarget = useRenderProps(props);
->>>>>>> 7757ad33bd071f530523dcfcb6854e96179b7c3e
   if (typeof renderTarget === 'function') {
     return renderTarget(params);
   } else {
