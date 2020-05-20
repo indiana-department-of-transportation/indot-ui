@@ -1,0 +1,3 @@
+# Searchbar
+
+Searchbar React component.
