@@ -46,5 +46,6 @@
   "license": "MIT",
   "dependencies": {
     "clsx": "^1.1.0"
-  }
+  },
+  "gitHead": "8fa688ae1f9ec496ad7c3a099e65f44357013e78"
 }

@@ -41,5 +41,6 @@
   "license": "MIT",
   "dependencies": {
     "@jasmith79/ts-utils": "^0.8.0"
-  }
+  },
+  "gitHead": "8fa688ae1f9ec496ad7c3a099e65f44357013e78"
 }
