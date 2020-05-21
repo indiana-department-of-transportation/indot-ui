@@ -1,6 +1,6 @@
 {
   "name": "@indot/logos",
-  "version": "0.3.3",
+  "version": "0.4.0",
   "description": "INDOT React Logo components",
   "main": "dist/index.js",
   "scripts": {
