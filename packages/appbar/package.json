@@ -1,6 +1,6 @@
 {
   "name": "@indot/appbar",
-  "version": "0.4.0",
+  "version": "0.5.0",
   "description": "Appbar for INDOT TMC React applications",
   "main": "dist/Appbar.js",
   "scripts": {
