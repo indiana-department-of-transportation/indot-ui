@@ -18,6 +18,7 @@ import {
 import {
   identity,
   echo,
+  HTMLFormControl,
 } from '@jasmith79/ts-utils';
 
 import {
@@ -26,10 +27,16 @@ import {
   extractSyntheticEventValue,
 } from '@jasmith79/react-utils';
 
+export type ParseFn<T> = {
+  (input: string): T,
+  (input: string[]): T[],
+  (input: T): T,
+}
+
 export type ValidatingInputProps<T> = {
   value: T,
   setValue: (value: T) => void,
-  parse?: (input: string | string[] | T) => T,
+  parse?: ParseFn<T>,
   format?: (value: T) => string,
   onError?: (err: Error) => void,
   name?: string,
@@ -38,8 +45,8 @@ export type ValidatingInputProps<T> = {
 export type ValidatingInputParams = {
   value: string,
   isError?: boolean,
-  onBlur: (evt: SyntheticEvent) => void,
-  onChange: (evt: SyntheticEvent) => void,
+  onBlur: (evt: SyntheticEvent<HTMLFormControl>) => void,
+  onChange: (evt: SyntheticEvent<HTMLFormControl>) => void,
   name: string,
 }
 
@@ -99,7 +106,7 @@ export const useValidatingInput = <T,>({
     }
   }, [value]);
 
-  const onBlur = useCallback((evt: SyntheticEvent) => {
+  const onBlur = useCallback((evt: SyntheticEvent<HTMLFormControl>) => {
     const value = extractSyntheticEventValue<T>(evt);
     try {
       const parsed = parse(value);
@@ -113,9 +120,17 @@ export const useValidatingInput = <T,>({
     }
   }, []);
 
-  const onChange = useCallback((evt: SyntheticEvent) => {
+  const onChange = useCallback((evt: SyntheticEvent<HTMLFormControl>) => {
     const value = extractSyntheticEventValue<T>(evt);
-    updateLocalState(format(value as T));
+    try {
+      const parsed = parse(value);
+      const display = format(parsed);
+      updateLocalState(display);
+      setValue(parsed);
+      updateErrorState(undefined);
+    } catch (err) {
+      // NO-OP
+    }
   }, []);
 
   const formCtrlName = name || setValue.name;

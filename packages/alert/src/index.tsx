@@ -34,8 +34,8 @@ type ClickProps = {
 };
 
 type AlertProps = {
-  title: string,
-  children: ReactNode,
+  title?: string,
+  children?: ReactNode,
   className?: string,
   timeout?: number,
   onConfirm?: (evt: SyntheticEvent) => void,
@@ -83,10 +83,10 @@ DEFAULT_CLOSER.propTypes = {
  */
 export const Alert = ({
   children,
-  title,
   timeout,
   onConfirm,
   Confirmer,
+  title = 'Oops!',
   className = '',
   onClose = emptyFn,
   Closer = DEFAULT_CLOSER,
@@ -145,8 +145,8 @@ export const Alert = ({
 };
 
 Alert.propTypes = {
-  children: PropTypes.node.isRequired,
-  title: PropTypes.string.isRequired,
+  children: PropTypes.node,
+  title: PropTypes.string,
   timeout: PropTypes.number,
   onConfirm: PropTypes.func,
   Confirmer: PropTypes.node,

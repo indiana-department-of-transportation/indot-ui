@@ -12,11 +12,14 @@ import logo from './indot-logo';
 /**
  * @description Logo with the Seal of Indiana.
  */
-export const INDOTLogo = () => (
+export const INDOTLogo = ({
+  className = '',
+} = {}) => (
   <img
     src={`data:image/png;base64, ${logo}`}
     alt="INDOT logo"
     style={{ width: '48px', height: '48px' }}
+    className={className}
   />
 );
 

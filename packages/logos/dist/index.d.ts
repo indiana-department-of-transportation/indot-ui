@@ -2,5 +2,7 @@
 /**
  * @description Logo with the Seal of Indiana.
  */
-export declare const INDOTLogo: () => JSX.Element;
+export declare const INDOTLogo: ({ className, }?: {
+    className?: string | undefined;
+}) => JSX.Element;
 export default INDOTLogo;

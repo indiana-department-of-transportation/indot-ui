@@ -13,8 +13,8 @@ declare type ClickProps = {
     onClick: (evt: SyntheticEvent) => void;
 };
 declare type AlertProps = {
-    title: string;
-    children: ReactNode;
+    title?: string;
+    children?: ReactNode;
     className?: string;
     timeout?: number;
     onConfirm?: (evt: SyntheticEvent) => void;
@@ -37,10 +37,10 @@ declare type AlertProps = {
  * @returns The Alert component.
  */
 export declare const Alert: {
-    ({ children, title, timeout, onConfirm, Confirmer, className, onClose, Closer, }: AlertProps): JSX.Element;
+    ({ children, timeout, onConfirm, Confirmer, title, className, onClose, Closer, }: AlertProps): JSX.Element;
     propTypes: {
-        children: PropTypes.Validator<string | number | boolean | {} | PropTypes.ReactElementLike | PropTypes.ReactNodeArray>;
-        title: PropTypes.Validator<string>;
+        children: PropTypes.Requireable<PropTypes.ReactNodeLike>;
+        title: PropTypes.Requireable<string>;
         timeout: PropTypes.Requireable<number>;
         onConfirm: PropTypes.Requireable<(...args: any[]) => any>;
         Confirmer: PropTypes.Requireable<PropTypes.ReactNodeLike>;

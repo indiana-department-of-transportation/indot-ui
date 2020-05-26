@@ -48,9 +48,13 @@ exports.Login = ({ login, className = '', }) => {
     return (react_1.default.createElement("form", { onSubmit: handleSubmit, className: className },
         react_1.default.createElement(Grid_1.default, { container: true, direction: "column", alignContent: "center", justify: "center", spacing: 1 },
             react_1.default.createElement(Grid_1.default, { item: true },
-                react_1.default.createElement(input_1.default, { value: userName, setValue: setUserName, parse: throwIfEmpty }, ({ onBlur, onChange, value, name, }) => (react_1.default.createElement(TextField_1.default, { autoFocus: true, onChange: onChange, onBlur: onBlur, value: value, name: name, required: true, label: "Name" })))),
+                react_1.default.createElement(input_1.default, { value: userName, setValue: setUserName, 
+                    // @ts-ignore
+                    parse: throwIfEmpty }, ({ onBlur, onChange, value, name, }) => (react_1.default.createElement(TextField_1.default, { autoFocus: true, onChange: onChange, onBlur: onBlur, value: value, name: name, required: true, label: "Name" })))),
             react_1.default.createElement(Grid_1.default, { item: true },
-                react_1.default.createElement(input_1.default, { value: userPass, setValue: setUserPass, parse: throwIfEmpty }, ({ onBlur, onChange, value, name, }) => (react_1.default.createElement(TextField_1.default, { onChange: onChange, onBlur: onBlur, type: "password", value: value, name: name, required: true, label: "Password" })))),
+                react_1.default.createElement(input_1.default, { value: userPass, setValue: setUserPass, 
+                    // @ts-ignore
+                    parse: throwIfEmpty }, ({ onBlur, onChange, value, name, }) => (react_1.default.createElement(TextField_1.default, { onChange: onChange, onBlur: onBlur, type: "password", value: value, name: name, required: true, label: "Password" })))),
             react_1.default.createElement(Grid_1.default, { item: true },
                 react_1.default.createElement(Button_1.default, { variant: "contained", color: "primary", style: { position: 'relative', top: '25px' }, type: "submit" }, "Submit")))));
 };

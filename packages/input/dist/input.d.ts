@@ -9,11 +9,17 @@
  * @copyright INDOT, 2020
  */
 import { SyntheticEvent } from 'react';
+import { HTMLFormControl } from '@jasmith79/ts-utils';
 import { RenderProps } from '@jasmith79/react-utils';
+export declare type ParseFn<T> = {
+    (input: string): T;
+    (input: string[]): T[];
+    (input: T): T;
+};
 export declare type ValidatingInputProps<T> = {
     value: T;
     setValue: (value: T) => void;
-    parse?: (input: string | string[] | T) => T;
+    parse?: ParseFn<T>;
     format?: (value: T) => string;
     onError?: (err: Error) => void;
     name?: string;
@@ -21,8 +27,8 @@ export declare type ValidatingInputProps<T> = {
 export declare type ValidatingInputParams = {
     value: string;
     isError?: boolean;
-    onBlur: (evt: SyntheticEvent) => void;
-    onChange: (evt: SyntheticEvent) => void;
+    onBlur: (evt: SyntheticEvent<HTMLFormControl>) => void;
+    onChange: (evt: SyntheticEvent<HTMLFormControl>) => void;
     name: string;
 };
 /**
@@ -45,8 +51,8 @@ export declare type ValidatingInputParams = {
 export declare const useValidatingInput: <T>({ value, setValue, parse, format, onError, name, }: ValidatingInputProps<T>) => {
     value: string;
     isError: boolean;
-    onBlur: (evt: SyntheticEvent<Element, Event>) => void;
-    onChange: (evt: SyntheticEvent<Element, Event>) => void;
+    onBlur: (evt: SyntheticEvent<HTMLFormControl, Event>) => void;
+    onChange: (evt: SyntheticEvent<HTMLFormControl, Event>) => void;
     name: string;
 };
 /**

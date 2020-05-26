@@ -53,7 +53,7 @@ DEFAULT_CLOSER.propTypes = {
  * @param props.Closer Optional override for the default closer.
  * @returns The Alert component.
  */
-exports.Alert = ({ children, title, timeout, onConfirm, Confirmer, className = '', onClose = ts_utils_1.emptyFn, Closer = DEFAULT_CLOSER, }) => {
+exports.Alert = ({ children, timeout, onConfirm, Confirmer, title = 'Oops!', className = '', onClose = ts_utils_1.emptyFn, Closer = DEFAULT_CLOSER, }) => {
     if (Confirmer && !onConfirm) {
         throw new Error('Confirm component provided to TMCAlert but no callback for confirmation!');
     }
@@ -91,8 +91,8 @@ exports.Alert = ({ children, title, timeout, onConfirm, Confirmer, className = '
             react_1.default.createElement(Closer, { onClick: handleClose })));
 };
 exports.Alert.propTypes = {
-    children: prop_types_1.default.node.isRequired,
-    title: prop_types_1.default.string.isRequired,
+    children: prop_types_1.default.node,
+    title: prop_types_1.default.string,
     timeout: prop_types_1.default.number,
     onConfirm: prop_types_1.default.func,
     Confirmer: prop_types_1.default.node,

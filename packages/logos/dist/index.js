@@ -16,6 +16,6 @@ const indot_logo_1 = __importDefault(require("./indot-logo"));
 /**
  * @description Logo with the Seal of Indiana.
  */
-exports.INDOTLogo = () => (react_1.default.createElement("img", { src: `data:image/png;base64, ${indot_logo_1.default}`, alt: "INDOT logo", style: { width: '48px', height: '48px' } }));
+exports.INDOTLogo = ({ className = '', } = {}) => (react_1.default.createElement("img", { src: `data:image/png;base64, ${indot_logo_1.default}`, alt: "INDOT logo", style: { width: '48px', height: '48px' }, className: className }));
 exports.default = exports.INDOTLogo;
 //# sourceMappingURL=index.js.map

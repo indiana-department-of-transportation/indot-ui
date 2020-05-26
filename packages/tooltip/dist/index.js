@@ -69,7 +69,7 @@ exports.Tooltip = (_a) => {
     return (react_1.default.createElement(Tooltip_1.default, Object.assign({}, rest, { title: titleElem }), contentElem));
 };
 exports.Tooltip.propTypes = {
-    title: prop_types_1.default.oneOf([prop_types_1.default.string, prop_types_1.default.node]).isRequired,
+    title: prop_types_1.default.oneOfType([prop_types_1.default.string, prop_types_1.default.node]).isRequired,
     children: prop_types_1.default.node,
 };
 exports.default = exports.Tooltip;

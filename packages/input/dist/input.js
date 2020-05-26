@@ -73,7 +73,16 @@ exports.useValidatingInput = ({ value, setValue, parse = ts_utils_1.echo, format
     }, []);
     const onChange = react_1.useCallback((evt) => {
         const value = react_utils_1.extractSyntheticEventValue(evt);
-        updateLocalState(format(value));
+        try {
+            const parsed = parse(value);
+            const display = format(parsed);
+            updateLocalState(display);
+            setValue(parsed);
+            updateErrorState(undefined);
+        }
+        catch (err) {
+            // NO-OP
+        }
     }, []);
     const formCtrlName = name || setValue.name;
     return {

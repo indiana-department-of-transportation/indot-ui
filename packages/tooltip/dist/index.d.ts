@@ -38,7 +38,7 @@ export declare const TooltipTitle: {
 export declare const Tooltip: {
     ({ title, children, ...rest }: TooltipProps): JSX.Element;
     propTypes: {
-        title: PropTypes.Validator<PropTypes.Requireable<PropTypes.ReactNodeLike>>;
+        title: PropTypes.Validator<string | number | boolean | {} | PropTypes.ReactElementLike | PropTypes.ReactNodeArray>;
         children: PropTypes.Requireable<PropTypes.ReactNodeLike>;
     };
 };

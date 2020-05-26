@@ -47,9 +47,15 @@ export const useResponsiveDrawerStyles = (width: number) => (makeStyles((theme) 
     mainContainer: {
       width: `calc(100% - ${drawerWidth})`,
       height: '100%',
+      left: drawerWidth,
+      position: 'relative',
+      [theme.breakpoints.down('md')]: {
+        width: '100%',
+        left: 0,
+      },
     },
     menuButton: {
-      [theme.breakpoints.up('sm')]: {
+      [theme.breakpoints.up('lg')]: {
         display: 'none',
       },
     },
@@ -138,19 +144,19 @@ export const useResponsiveDrawer = ({
     const Drawer: React.FunctionComponent<{
       className?: string,
       children: React.ReactNode,
-    }>  = ({
+    }> = ({
       children,
       className = '',
     }) => (
-      <ResponsiveDrawer
-        open={open}
-        setOpen={setOpen}
-        width={width}
-        className={className}
-      >
-        {children}
-      </ResponsiveDrawer>
-    );
+          <ResponsiveDrawer
+            open={open}
+            setOpen={setOpen}
+            width={width}
+            className={className}
+          >
+            {children}
+          </ResponsiveDrawer>
+        );
 
     Drawer.propTypes = {
       children: PropTypes.node.isRequired,
@@ -164,16 +170,16 @@ export const useResponsiveDrawer = ({
     const MenuButton: React.FunctionComponent<{ className?: string }> = ({
       className = ''
     }) => (
-      <IconButton
-        color="inherit"
-        aria-label="open drawer"
-        edge="end"
-        onClick={() => setOpen(true)}
-        className={clsx(classes.menuButton, className)}
-      >
-        <MenuIcon />
-      </IconButton>
-    );
+        <IconButton
+          color="inherit"
+          aria-label="open drawer"
+          edge="end"
+          onClick={() => setOpen(true)}
+          className={clsx(classes.menuButton, className)}
+        >
+          <MenuIcon />
+        </IconButton>
+      );
 
     MenuButton.propTypes = {
       className: PropTypes.string,
@@ -193,12 +199,12 @@ export const useResponsiveDrawer = ({
       children: React.ReactNode,
       className?: string,
     }) => {
-      return (
-        <main className={clsx(classes.mainContainer, className)}>
-          {children}
-        </main>
-      );
-    };
+        return (
+          <main className={clsx(classes.mainContainer, className)}>
+            {children}
+          </main>
+        );
+      };
 
     Main.propTypes = {
       children: PropTypes.node.isRequired,

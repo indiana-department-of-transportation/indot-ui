@@ -57,9 +57,10 @@ export const Login = ({
         spacing={1}
       >
         <Grid item>
-          <ValidatingInput
+          <ValidatingInput<string>
             value={userName}
             setValue={setUserName}
+            // @ts-ignore
             parse={throwIfEmpty}
           >
             {({
@@ -84,6 +85,7 @@ export const Login = ({
           <ValidatingInput
             value={userPass}
             setValue={setUserPass}
+            // @ts-ignore
             parse={throwIfEmpty}
           >
             {({

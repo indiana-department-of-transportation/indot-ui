@@ -41,9 +41,15 @@ exports.useResponsiveDrawerStyles = (width) => (styles_1.makeStyles((theme) => {
         mainContainer: {
             width: `calc(100% - ${drawerWidth})`,
             height: '100%',
+            left: drawerWidth,
+            position: 'relative',
+            [theme.breakpoints.down('md')]: {
+                width: '100%',
+                left: 0,
+            },
         },
         menuButton: {
-            [theme.breakpoints.up('sm')]: {
+            [theme.breakpoints.up('lg')]: {
                 display: 'none',
             },
         },
